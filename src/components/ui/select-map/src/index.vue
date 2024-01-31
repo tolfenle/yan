@@ -82,7 +82,7 @@ const editorStore = useEditorStore()
 
 const options = ref([])
 onMounted(async() => {
-  const mapJSON = await axios.get(setUrl('/public/uploads/mapjson/pca-code.json'))
+  const mapJSON = await axios.get(setUrl('/public/mapjson/pca-code.json'))
   options.value = mapJSON.data
 })
 

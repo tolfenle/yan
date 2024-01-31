@@ -51,7 +51,7 @@ export class Map3d extends Base {
     }, {
       name: 'city',
       type: 'file',
-      path: setUrl(regex.test(map.data) ? `/public/uploads/mapjson/${padNumberToSixDigits(map.data)}.json` : map.data),
+      path: setUrl(regex.test(map.data) ? `/public/mapjson/${padNumberToSixDigits(map.data)}.json` : map.data),
     }]
     const lodrotationBorder = rotate.map((ro, index) => {
       return {

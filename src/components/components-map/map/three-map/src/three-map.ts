@@ -83,7 +83,7 @@ export class ThreeMap extends DatavEChartsComponent {
     chinaMap: {
       show: true,
       // 地图数据
-      data: 'public/uploads/mapjson/100000.json',
+      data: 'public/mapjson/100000.json',
       // 地图正面
       topFaceMaterial: {
         color: useChartColor({ value: '#18263b', isDefault: true }),
@@ -125,7 +125,7 @@ export class ThreeMap extends DatavEChartsComponent {
     // 地图
     map: {
       // 地图数据
-      data: 'public/uploads/mapjson/610000.json',
+      data: 'public/mapjson/610000.json',
       // 地图正面
       topFaceMaterial: {
         color: useChartColor({ value: '#18263b', isDefault: true }),

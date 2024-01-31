@@ -85,6 +85,6 @@ export const registerMapAsync = async (mayType: string) => {
   }
   const { setUrl } = useEnvUrl()
   const regex = /^\d+$/
-  const res = await axios.get(`${setUrl('/public/uploads/mapjson')}/${regex.test(mayType)?padNumberToSixDigits(mayType) : mayType}.json`)
+  const res = await axios.get(`${setUrl('/public/mapjson')}/${regex.test(mayType)?padNumberToSixDigits(mayType) : mayType}.json`)
   registerMap(mayType, res.data)
 }

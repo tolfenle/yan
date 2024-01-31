@@ -4,12 +4,12 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2023-10-31 11:12:39
- * @LastEditTime : 2024-01-31 10:22:28
+ * @LastEditTime : 2024-01-31 13:46:55
 -->
 
 <div align="center">
   <a href="https://datav.ikingtech.com/">
-    <img src="./public/logo.png" alt="Logo" width="120" height="120">
+    <img src="https://datav.ikingtech.com/logo.png" alt="Logo" width="120" height="120">
   </a>
 
   <h3>金合可视化平台</h3>
@@ -45,15 +45,15 @@
 * 🔥 Threejs 0.159.0
 
 ### 平台截图
-<img src="./public/images/图片1.png">
+<img src="https://datav.ikingtech.com/图片1.png">
 
-<img src="./public/images/图片2.png">
+<img src="https://datav.ikingtech.com/图片2.png">
 
-<img src="./public/images/图片3.png">
+<img src="https://datav.ikingtech.com/图片3.png">
 
 ## 联系我们
 <h3>技术交流群</h3>
-<img src="./public/images/qywx.jpg" width="200">
+<img src="https://datav.ikingtech.com/qywx.jpg" width="200">
 <br />
 <br />
 邮箱 - nanawfl@163.com / wfl.118@qq.com
