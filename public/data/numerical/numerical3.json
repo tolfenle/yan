@@ -1,0 +1,23 @@
+[{
+  "title": "数据指标一",
+  "count": 365476,
+  "suffix": "万元",
+  "percent": "0.6"
+},{
+  "title": "数据指标二",
+  "count": 12568,
+  "suffix": "万元",
+  "percent": "0.4"
+},
+{
+  "title": "数据指标三",
+  "count": 12034,
+  "suffix": "万元",
+  "percent": "0.4"
+},
+{
+  "title": "数据指标四",
+  "count": 30259,
+  "suffix": "万元",
+  "percent": "0.4"
+}]

@@ -1,0 +1,13 @@
+.n-radio-group {
+  --n-button-border-radius: 4px !important;
+
+  display: flex;
+  width: 100%;
+
+  .n-radio-button {
+    padding: 0 8px;
+    flex: 1;
+    text-align: center;
+    line-height: 20px;
+  }
+}

@@ -1,0 +1,132 @@
+@import "./themes/index";
+@import "./icon";
+@import "./common";
+
+/* 金合可视化平台 UI */
+@import "./button";
+@import "./cascader";
+@import "./collapse";
+@import "./color-picker";
+@import "./dialog";
+@import "./drawer";
+@import "./dropdown";
+@import "./empty";
+@import "./field-tabs";
+@import "./field";
+@import "./input-number";
+@import "./input";
+@import "./layout";
+@import "./loading";
+@import "./message";
+@import "./monaco-editor";
+@import "./radio-group";
+@import "./select-image";
+@import "./select-shape";
+@import "./select";
+@import "./slider";
+@import "./tabs";
+@import "./tooltip-popover";
+@import "./tooltip";
+@import "./upload";
+@import "../assets/icon/iconfont.css";
+
+.setting-panel-content,
+.config-panel-wp {
+  .el-tabs--card > .el-tabs__header {
+    border: none !important;
+  }
+
+  .el-tabs--left.el-tabs--card .el-tabs__item.is-left {
+    border: none !important;
+  }
+
+  .el-tabs--left.el-tabs--card .el-tabs__nav {
+    border: none !important;
+  }
+
+  .el-tabs--left .el-tabs__header {
+    width: 35px !important;
+  }
+
+  /* stylelint-disable-next-line no-duplicate-selectors */
+  .el-tabs--left.el-tabs--card .el-tabs__item.is-left {
+    text-align: center !important;
+    padding: 10px 8px !important;
+    writing-mode: vertical-rl !important;
+    text-orientation: upright !important;
+    height: auto;
+    box-sizing: border-box;
+    line-height: unset;
+    letter-spacing: 3px;
+
+    .el-tab-pane {
+      padding: 8px 0;
+    }
+  }
+}
+
+.n-base-close:not(.n-base-close--disabled):hover {
+  color: var(--datav-warn-color) !important;
+
+  &::before {
+    background-color: transparent;
+  }
+}
+
+@font-face {
+  font-family: 'Number1';
+  src: url('./fonts/DIN_Condensed_Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Number2';
+  src: url('./fonts/DIN_AlternateV2版新增.otf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Number3';
+  src: url('./fonts/DIN_Condensed_Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Number4';
+  src: url('./fonts/DINCond-Regular.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Number5';
+  src: url('./fonts/DINPro-Regular.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+.iking-datav-tip {
+  color: var(--datav-gray-color);
+}
+
+.datav-tip-font {
+  color: var(--datav-gray-color);
+  font-size: 12px;
+}
+
+.datav-warn-font {
+  color: var(--datav-warn-color);
+  font-size: 12px;
+}
+
+.datav-link {
+  color: var(--datav-main-click-color);
+}

@@ -1,0 +1,185 @@
+.interaction-panle {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  .events-title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 35px;
+    line-height: 35px;
+    padding-left: 16px;
+    background: var(--datav-config-bg);
+    border-bottom: var(--datav-config-border);
+    color: var(--datav-font-color);
+    cursor: pointer;
+
+    .event-text {
+      width: 150px;
+      line-height: 1;
+      align-items: center;
+      display: flex;
+      padding: 4px 0;
+    }
+
+    .event-add {
+      position: absolute;
+      right: 25px;
+
+      &:hover {
+        color: var(--datav-main-color);
+      }
+    }
+
+    .extra,
+    .enable-checkbox {
+      position: absolute;
+      right: 10px;
+    }
+  }
+
+  .com-events > .events-title {
+    padding: 0 10px;
+  }
+
+  .events-up {
+    margin-right: 2px;
+    transition: 0.2s transform ease-in;
+  }
+
+  .events-down {
+    margin-right: 2px;
+    transition: 0.2s transform ease-in;
+    transform: rotate(90deg);
+  }
+
+  .tutorial-link {
+    color: var(--datav-font-color);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .event-list {
+    font-size: 12px;
+  }
+}
+
+.com-event-draw.n-drawer {
+  box-shadow: 0 0 4px 0 #000;
+
+  .n-data-table {
+    .n-data-table-th,
+    .n-data-table-td {
+      background-color: rgb(29 33 38);
+
+      .n-icon {
+        cursor: pointer;
+
+        &:hover {
+          color: var(--datav-error-color);
+        }
+      }
+
+      .n-select {
+        top: 5px;
+      }
+    }
+  }
+}
+
+.variables {
+  padding: 0 10px;
+  color: var(--datav-font-color);
+  background: #15171c;
+
+  .event-item-icon {
+    display: flex;
+    margin: 0 5px;
+    width: 85px;
+    justify-content: space-between;
+
+    .event-icon {
+      cursor: pointer;
+
+      &:hover {
+        color: var(--datav-main-color);
+      }
+    }
+  }
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #272727;
+    align-items: center;
+
+    p {
+      width: 150px;
+    }
+
+    .n-checkbox {
+      width: 130px;
+      justify-content: flex-end;
+    }
+  }
+}
+
+.add-variable {
+  padding-top: 0;
+  padding-bottom: 20px;
+  border-top: var(--datav-config-border);
+  display: flex;
+  width: 100%;
+
+  .n-button {
+    width: 100%;
+  }
+}
+
+.variables-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  thead {
+    border-bottom: var(--datav-config-border);
+  }
+
+  th,
+  td {
+    height: 38px;
+    vertical-align: middle;
+    text-align: left;
+    font-weight: unset;
+
+    &:first-child {
+      text-indent: 11px;
+    }
+  }
+
+  .variable-input .attr-input {
+    width: 85%;
+    padding: 0 5px;
+    background: #262c33;
+    color: #fff;
+    border: 1px solid transparent;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
+    .datav-gui {
+      width: 80%;
+    }
+  }
+
+  .variable-btn .delete-btn {
+    cursor: pointer;
+
+    &:hover {
+      color: var(--datav-main-color);
+    }
+  }
+}

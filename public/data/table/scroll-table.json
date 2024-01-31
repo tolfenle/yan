@@ -1,0 +1,82 @@
+[
+  {
+    "name": "小米MI 14",
+    "price": 3699,
+    "color": "白色",
+    "statu": "良好",
+    "date": "2023-11-10",
+    "desc": "Xiaomi 14. 徕卡光学进阶之作。 超大光圈镜头，匹配超动态影像传感器，驾驭全场景的抓拍实力"
+  },
+  {
+    "name": "华为P40 Pro",
+    "price": 5999,
+    "color": "黑色",
+    "statu": "全新",
+    "date": "2023-11-18",
+    "desc": "Huawei P40 Pro. 麒麟990芯片，超级感光徕卡四摄，支持多种专业拍摄模式和功能"
+  },
+  {
+    "name": "苹果iPhone 12",
+    "price": 7999,
+    "color": "蓝色",
+    "statu": "完好",
+    "date": "2023-09-18",
+    "desc": "Apple iPhone 12. A14仿生芯片，全面屏设计，采用陶瓷盖板，更强的性能和耐久性"
+  },
+  {
+    "name": "三星Galaxy S21 Ultra",
+    "price": 10999,
+    "color": "银色",
+    "statu": "准新",
+    "date": "2023-08-27",
+    "desc": "Samsung Galaxy S21 Ultra. 超级视网膜Infinity-O显示屏，Exynos 2100芯片，支持S Pen"
+  },
+  {
+    "name": "OPPO Find X3 Pro",
+    "price": 7499,
+    "color": "橙色",
+    "statu": "优良",
+    "date": "2023-11-23",
+    "desc": "OPPO Find X3 Pro. 高通骁龙888芯片，超感光全景摄影系统，支持较快的65W超级闪充"
+  },
+  {
+    "name": "一加9 Pro",
+    "price": 6299,
+    "color": "黑色",
+    "statu": "准新",
+    "date": "2023-11-23",
+    "desc": "OnePlus 9 Pro. 高通骁龙888芯片，Hasselblad认证主摄像头，支持128W有线和50W无线快充"
+  },
+  {
+    "name": "索尼Xperia 1 III",
+    "price": 8999,
+    "color": "紫色",
+    "statu": "全新",
+    "date": "2023-11-23",
+    "desc": "Sony Xperia 1 III. 4K HDR OLED显示屏，骁龙888芯片，三摄合一概念设计，支持高清音频输出"
+  },
+  {
+    "name": "vivo X60 Pro+",
+    "price": 4999,
+    "color": "灰色",
+    "statu": "良好",
+    "date": "2023-11-23",
+    "desc": "vivo X60 Pro+. 蔡司联合定制镜头，超感光稳定微云台，支持5G网络和双模天线"
+  },
+  {
+    "name": "realme GT",
+    "price": 2799,
+    "color": "蓝色",
+    "statu": "完好",
+    "date": "2023-11-23",
+    "desc": "realme GT. 高通骁龙888芯片，90Hz超感官全面屏，支持65W超级闪充和双Mode 5G"
+  },
+  {
+    "name": "华硕ROG Phone 5",
+    "price": 6499,
+    "color": "黑色",
+    "statu": "准新",
+    "date": "2023-11-23",
+    "desc": "ASUS ROG Phone 5. 高通骁龙888 Plus芯片，144Hz刷新率AMOLED，支持RGB背光效果"
+  }
+]

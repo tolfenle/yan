@@ -1,0 +1,37 @@
+.datav-gui {
+  &.--inline {
+    display: inline-block;
+    width: calc(50% - 8px);
+    flex: 0 0 calc(50% - 8px);
+    padding-bottom: 4px;
+
+    &.--single {
+      width: 196px;
+      flex: 0 0 196px;
+    }
+  }
+
+  .g-slider {
+    width: 100%;
+  }
+
+  &.g-switch {
+    width: calc(50% - 8px);
+    // margin-top: -8px;
+
+    .n-switch,
+    .n-switch__rail {
+      width: 30px;
+    }
+  }
+}
+
+.datav-wraper {
+  box-sizing: border-box;
+}
+
+.datav-empty {
+  display: inline-block;
+  color: var(--datav-gui-empty-color);
+  text-align: center;
+}

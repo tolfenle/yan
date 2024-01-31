@@ -1,0 +1,149 @@
+{
+  "id": "4347552",
+  "name": "iking-datav",
+  "font_family": "ik-118-datav",
+  "css_prefix_text": "ik-118-datav-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1727450",
+      "name": "217时间",
+      "font_class": "shijian",
+      "unicode": "e8c5",
+      "unicode_decimal": 59589
+    },
+    {
+      "icon_id": "5286696",
+      "name": "时间",
+      "font_class": "shijian1",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "17292022",
+      "name": "日期",
+      "font_class": "riqi",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "27966458",
+      "name": "时间",
+      "font_class": "shijian2",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "38288163",
+      "name": "上涨-copy",
+      "font_class": "shangzhang5-copy",
+      "unicode": "ea16",
+      "unicode_decimal": 59926
+    },
+    {
+      "icon_id": "38288201",
+      "name": "增长-copy",
+      "font_class": "zengchang1-copy",
+      "unicode": "ea17",
+      "unicode_decimal": 59927
+    },
+    {
+      "icon_id": "38288207",
+      "name": "下跌-copy",
+      "font_class": "xiadie3-copy",
+      "unicode": "ea18",
+      "unicode_decimal": 59928
+    },
+    {
+      "icon_id": "38288215",
+      "name": "下跌-copy",
+      "font_class": "xiadie4-copy",
+      "unicode": "ea19",
+      "unicode_decimal": 59929
+    },
+    {
+      "icon_id": "3092315",
+      "name": "图表 上升趋势",
+      "font_class": "tubiaoshangshengqushi",
+      "unicode": "e790",
+      "unicode_decimal": 59280
+    },
+    {
+      "icon_id": "3092316",
+      "name": "图表 下降趋势",
+      "font_class": "tubiaoxiajiangqushi",
+      "unicode": "e791",
+      "unicode_decimal": 59281
+    },
+    {
+      "icon_id": "8394797",
+      "name": "上涨",
+      "font_class": "shangzhang2",
+      "unicode": "e710",
+      "unicode_decimal": 59152
+    },
+    {
+      "icon_id": "8730222",
+      "name": "上涨",
+      "font_class": "shangzhang3",
+      "unicode": "e80e",
+      "unicode_decimal": 59406
+    },
+    {
+      "icon_id": "10054933",
+      "name": "下跌",
+      "font_class": "xiadie1",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "10105874",
+      "name": "上涨",
+      "font_class": "shangzhang5",
+      "unicode": "ea15",
+      "unicode_decimal": 59925
+    },
+    {
+      "icon_id": "10735683",
+      "name": "增长",
+      "font_class": "zengchang1",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "11527309",
+      "name": "上涨",
+      "font_class": "shangzhang7",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "11527310",
+      "name": "下跌",
+      "font_class": "xiadie2",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "38288240",
+      "name": "上涨-copy",
+      "font_class": "shangzhang2-copy",
+      "unicode": "ea1a",
+      "unicode_decimal": 59930
+    },
+    {
+      "icon_id": "16165591",
+      "name": "下跌",
+      "font_class": "xiadie3",
+      "unicode": "e657",
+      "unicode_decimal": 58967
+    },
+    {
+      "icon_id": "22769025",
+      "name": "下跌",
+      "font_class": "xiadie4",
+      "unicode": "e679",
+      "unicode_decimal": 59001
+    }
+  ]
+}

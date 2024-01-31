@@ -1,0 +1,32 @@
+[
+  {
+    "name": "周至县",
+    "adcode": 610124,
+    "value": 8,
+    "lonlat": null
+  },
+  {
+    "name": "长安区",
+    "adcode": 610116,
+    "value": 25,
+    "lonlat": null
+  },
+  {
+    "name": "蓝田县",
+    "adcode": 610122,
+    "value": 16,
+    "lonlat": null
+  },
+  {
+    "name": "高陵区",
+    "adcode": 610117,
+    "value": 2,
+    "lonlat": null
+  },
+  {
+    "name": "鄠邑区",
+    "adcode": 610118,
+    "value": 4,
+    "lonlat": null
+  }
+]

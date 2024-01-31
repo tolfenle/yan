@@ -1,0 +1,27 @@
+.n-button {
+  --n-border-radius: 4px !important;
+
+  &.n-button--default-type {
+    --n-border: var(--datav-border) !important;
+    --n-text-color: var(--datav-font-color) !important;
+
+    background-color: var(--datav-from-com-bg);
+
+    &.n-button--ghost {
+      &:hover {
+        background-color: var(--datav-main-hover-color);
+      }
+
+      &:focus {
+        color: var(--datav-main-color);
+        background-color: transparent;
+
+        &:hover,
+        &:active {
+          color: #fff;
+          background-color: var(--datav-main-click-color);
+        }
+      }
+    }
+  }
+}
