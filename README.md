@@ -6,9 +6,6 @@
  * @Date         : 2023-10-31 11:12:39
  * @LastEditTime : 2024-01-31 10:22:28
 -->
-<p align="center">
-  <img src="./public/logo.png">
-</p>
 
 <div align="center">
   <a href="https://datav.ikingtech.com/">
