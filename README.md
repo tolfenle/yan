@@ -9,9 +9,26 @@
 <p align="center">
   <img src="./public/logo.png">
 </p>
-<h1 align="center">金合可视化平台</h1>
 
-<h4 align="center">[预览](https://datav.ikingtech.com/) | [Node服务端](https://gitee.com/ikingtech/iking-datav-server) | [文档](https://datavdoc.ikingtech.com/)  | [管理后台](#)</h4>
+<div align="center">
+  <a href="https://datav.ikingtech.com/">
+    <img src="./public/logo.png" alt="Logo" width="120" height="120">
+  </a>
+
+  <h3>金合可视化平台</h3>
+
+  <a href="http://www.ikingtech.com/">官网</a>
+  |
+  <a href="https://datavdoc.ikingtech.com">文档</a>
+  |
+  <a href="https://datav.ikingtech.com">在线演示</a>
+  |
+  <a href="https://gitee.com/ikingtech/iking-datav-server">Node服务端</a>
+  |
+  <a href="https://gitee.com/ikingtech/iking-datav/issues">提交Bug</a>
+
+  演示环境账号：iking 密码：iking.com
+</div>
 
 ## 简介
 金合可视化平台是一个通过拖拽配置生成可视化大屏的低代码平台。它包含项目管理、应用管理、数据源管理、过滤器管理、收藏、模板市场、应用独立部署等功能。平台提供了丰富的图表组件、地图组件、媒体组件、动画组件和常用的大屏页面组件，支持加载三维模型，支持事件配置。用户可以通过简单的鼠标拖拽组件放入页面容器，配置组件样式，组件数据。即可完成一个大屏页面的开发。
