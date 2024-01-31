@@ -10,12 +10,6 @@
   <img src="./public/logo.png">
 </p>
 <h1 align="center">金合可视化平台</h1>
-<p align="center">
-  <a href="https://github.com/pengxiaotian/datav-vue/actions/workflows/main-deploy.yml">
-    <img src="https://github.com/pengxiaotian/datav-vue/actions/workflows/main-deploy.yml/badge.svg?branch=main">
-  </a>
-  <br>
-</p>
 
 ## 简介
 金合可视化平台是一个通过拖拽配置生成可视化大屏的低代码平台。它包含项目管理、应用管理、数据源管理、过滤器管理、收藏、模板市场、应用独立部署等功能。平台提供了丰富的图表组件、地图组件、媒体组件、动画组件和常用的大屏页面组件，支持加载三维模型，支持事件配置。用户可以通过简单的鼠标拖拽组件放入页面容器，配置组件样式，组件数据。即可完成一个大屏页面的开发。
