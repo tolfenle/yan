@@ -3,13 +3,21 @@
  * @LastEditors  : wfl
  * @description  :
  * @updateInfo   :
+ * @Date         : 2024-01-02 18:00:09
+ * @LastEditTime : 2024-02-02 14:33:24
+-->
+<!--
+ * @Author       : wfl
+ * @LastEditors  : wfl
+ * @description  :
+ * @updateInfo   :
  * @Date         : 2023-12-06 10:52:37
- * @LastEditTime : 2024-01-03 15:07:25
+ * @LastEditTime : 2024-02-02 14:33:11
 -->
 <template>
-  <chartGenerateConfig v-if="config.generate.configType === 'basic'" chart-type="none" :config="config" />
+  <chartGenerateConfig v-if="config.generate.configType === GenerateType.基础" chart-type="none" :config="config" />
   <el-tabs
-    v-else-if="config.generate.configType === 'all'"
+    v-else-if="config.generate.configType === GenerateType.全量"
     key="cardleft"
     tab-position="left"
     type="card"
@@ -137,6 +145,7 @@ export default defineComponent({
       fontFamilys: GlFontFamilys,
       GlScatters,
       GlScatterFills,
+      GenerateType: EGenerateType,
     }
   },
 })

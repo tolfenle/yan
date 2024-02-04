@@ -1,8 +1,8 @@
 <template>
   <div class="setting-panel-gui">
-    <chartGenerateConfig v-if="config.generate.configType === 'basic'" :config="config" chart-type="line" />
+    <chartGenerateConfig v-if="config.generate.configType === GenerateType.基础" :config="config" chart-type="line" />
     <el-tabs
-      v-else-if="config.generate.configType === 'all'"
+      v-else-if="config.generate.configType === GenerateType.全量"
       key="cardleft"
       tab-position="left"
       type="card"
@@ -94,6 +94,7 @@ export default defineComponent({
       orients: GlOrients,
       echartIcons: GlEchartIcons,
       animationEasings: GlAnimationEasings,
+      GenerateType: EGenerateType,
     }
   },
 })

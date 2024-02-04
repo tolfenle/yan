@@ -4,10 +4,10 @@
  * @description  :
  * @updateInfo   :cssLayoutLabel
  * @Date         : 2023-11-23 18:29:13
- * @LastEditTime : 2023-12-13 18:00:09
+ * @LastEditTime : 2024-02-02 14:32:36
 -->
 <template>
-  <chartGenerateConfig v-if="config.generate.configType === 'basic'" :config="config" chart-type="none">
+  <chartGenerateConfig v-if="config.generate.configType === GenerateType.基础" :config="config" chart-type="none">
     <g-field :level="2" label-span="6" label="TOP显示类型">
       <g-select v-model="config.generate.type" :data="topShowTypes" />
     </g-field>
@@ -42,7 +42,7 @@
     </g-field>
   </chartGenerateConfig>
   <el-tabs
-    v-else-if="config.generate.configType === 'all'"
+    v-else-if="config.generate.configType === GenerateType.全量"
     key="cardleft"
     tab-position="left"
     type="card"
@@ -235,7 +235,7 @@ export default defineComponent({
     const config = toRef(props.com, 'config')
 
     const handleAddSeriesItem = () => {
-      config.value.series.push(new Numerical1Series(`TOP${config.value.series.length + 1}`))
+      config.value.series.push(new ScrollRankSeries(`TOP${config.value.series.length + 1}`))
     }
 
     const handRemoveSeriesItem = index => {
@@ -255,6 +255,7 @@ export default defineComponent({
       waperEffects: GlWaperEffects,
       lineStyles: GlLineStyles,
       topShowTypes: GlTopShowTypes,
+      GenerateType: EGenerateType,
     }
   },
 })

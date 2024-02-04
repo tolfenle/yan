@@ -7,7 +7,7 @@
  * @LastEditTime : 2024-01-02 17:31:08
 -->
 <template>
-  <chartGenerateConfig v-if="config.generate.configType === 'basic'" :config="config" chart-type="none">
+  <chartGenerateConfig v-if="config.generate.configType === GenerateType.基础" :config="config" chart-type="none">
     <g-field :level="2" label-span="6" label="大小">
       <n-radio-group v-model:value="config.generate.size" size="small">
         <n-radio-button value="small"> 小 </n-radio-button>
@@ -38,7 +38,7 @@
     </g-field>
   </chartGenerateConfig>
   <el-tabs
-    v-else-if="config.generate.configType === 'all'"
+    v-else-if="config.generate.configType === GenerateType.全量"
     key="cardleft"
     tab-position="left"
     type="card"
@@ -321,6 +321,7 @@ export default defineComponent({
       waperEffects: GlWaperEffects,
       lineStyles: GlLineStyles,
       topShowTypes: GlTopShowTypes,
+      GenerateType: EGenerateType,
     }
   },
 })

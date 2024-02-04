@@ -23,6 +23,10 @@ export function getScreen(id: number | string) {
   return netGet(`/app/screen/screen/${id}`)
 }
 
+export function getScreenPage(param: { page: number; size: number; groupId?: String; name?: String; order?: string; }) {
+  return netPost(`/app/screen/screen/page`, param)
+}
+
 export function getScreenByProject(param) {
   return netGet(`/app/screen/screen/apps`, param)
 }

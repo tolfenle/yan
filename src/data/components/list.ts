@@ -17,6 +17,12 @@ export const list: ComDataType = {
       img: `${COM_CDN}/scroll-table-332-144.png`,
       thum: `${COM_CDN}/scroll-table-332-144.png`,
       used: true,
+    }, {
+      name: 'VPageTable',
+      alias: '分页表格',
+      img: `${COM_CDN}/page-table-332-144.jpg`,
+      thum: `${COM_CDN}/page-table-332-144.jpg`,
+      used: false,
     },
   ],
 }

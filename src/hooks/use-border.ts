@@ -45,5 +45,6 @@ export const useCssBorder = (param = {}) => {
     borderWidth: 0,
     borderType: 'solid',
     borderRadius: 4,
+    ...param,
   }
 }

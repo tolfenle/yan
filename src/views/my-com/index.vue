@@ -9,7 +9,7 @@
 <template>
   <div v-if="collectComs.length" class="coll-com">
     <div v-for="item in collectComs" :key="item.id">
-      <img :src="item.img">
+      <img v-lazy="item.img">
       <div class="title">
         {{ item.alias }}
         <div class="collect-com-edit">

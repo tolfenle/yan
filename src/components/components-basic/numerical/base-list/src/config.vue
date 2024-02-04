@@ -7,11 +7,11 @@
  * @LastEditTime : 2024-01-11 20:27:19
 -->
 <template>
-  <chartGenerateConfig v-if="config.generate.configType === 'basic'" :config="config" chart-type="none">
+  <chartGenerateConfig v-if="config.generate.configType === GenerateType.基础" :config="config" chart-type="none">
     <g-field :level="2" label="间隔">
-      <g-switch label="标题应用主题色" v-model="config.generate.titleInColor" />
-      <g-switch label="数值应用主题色" v-model="config.generate.numberInColor" />
-      <g-switch label="百分比应用主题色" v-model="config.generate.progressInColor" />
+      <g-switch v-model="config.generate.titleInColor" label="标题应用主题色" />
+      <g-switch v-model="config.generate.numberInColor" label="数值应用主题色" />
+      <g-switch v-model="config.generate.progressInColor" label="百分比应用主题色" />
     </g-field>
     <g-field :level="2" label="列数">
       <g-input-number
@@ -43,7 +43,7 @@
     </g-field>
   </chartGenerateConfig>
   <el-tabs
-    v-else-if="config.generate.configType === 'all'"
+    v-else-if="config.generate.configType === GenerateType.全量"
     key="cardleft"
     tab-position="left"
     type="card"
@@ -178,6 +178,7 @@ export default defineComponent({
       vAligns: GlVAligns,
       orients: GlOrients,
       waperEffects: GlWaperEffects,
+      GenerateType: EGenerateType,
     }
   },
 })

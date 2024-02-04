@@ -14,6 +14,7 @@ declare global {
   const ComType: typeof import('../components/_models/datav-component')['ComType']
   const EChartEasing: typeof import('../components/_models/echarts-animation')['EChartEasing']
   const EFormatterType: typeof import('../components/_models/datav-component')['EFormatterType']
+  const EGenerateType: typeof import('../components/chart-config/generate/config')['EGenerateType']
   const ELOCAL_TYPE: typeof import('../enum/global')['ELOCAL_TYPE']
   const ESYMBOL_TYPE: typeof import('../enum/global')['ESYMBOL_TYPE']
   const ETITLE_CONFIG: typeof import('../components/chart-config/title/config')['ETITLE_CONFIG']

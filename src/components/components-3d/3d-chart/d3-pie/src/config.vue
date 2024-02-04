@@ -7,7 +7,7 @@
  * @LastEditTime : 2024-01-29 19:15:23
 -->
 <template>
-  <chartGenerateConfig v-if="config.generate.configType === 'basic'" chart-type="null" :config="config">
+  <chartGenerateConfig v-if="config.generate.configType === GenerateType.基础" chart-type="null" :config="config">
     <g-field :level="2" label="图形位置" :is-flat="true">
       <g-input-number
         v-model="config.global.center.y"
@@ -26,7 +26,7 @@
     </g-field>
   </chartGenerateConfig>
   <el-tabs
-    v-else-if="config.generate.configType === 'all'"
+    v-else-if="config.generate.configType === GenerateType.全量"
     key="cardleft"
     tab-position="left"
     type="card"
@@ -356,5 +356,5 @@ const hAligns = GlHAligns
 const vAligns = GlVAligns
 const highLayouts = GlHighLayouts
 const higtShapeTypes = GlHigtShapeTypes
-
+const GenerateType = EGenerateType
 </script>

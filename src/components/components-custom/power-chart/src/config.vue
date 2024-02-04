@@ -1,11 +1,11 @@
 <template>
-  <chartGenerateConfig v-if="config.generate.configType === 'basic'" :config="config">
+  <chartGenerateConfig v-if="config.generate.configType === GenerateType.基础" :config="config">
     <g-field :level="2" label="AI制图" label-span="6">
       <n-button @click="handOpenChat">使用AI生成想要的图表</n-button>
     </g-field>
   </chartGenerateConfig>
   <el-tabs
-    v-else-if="config.generate.configType === 'all'"
+    v-else-if="config.generate.configType === GenerateType.全量"
     key="cardleft"
     tab-position="left"
     type="card"
@@ -146,6 +146,7 @@ export default defineComponent({
       handClose,
       showChart,
       fontFamilys: GlFontFamilys,
+      GenerateType: EGenerateType,
     }
   },
 })

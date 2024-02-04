@@ -88,6 +88,7 @@
           :data="coms"
           :expand-on-click-node="false"
           :default-expanded-keys="expendKeys"
+          empty-text="暂无图层"
           @node-click="handNodeClick"
           @node-contextmenu="handContextMenu"
           @node-drag-over="dragOver"

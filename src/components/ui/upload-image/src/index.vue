@@ -4,7 +4,7 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2023-11-10 18:32:30
- * @LastEditTime : 2024-01-08 12:20:15
+ * @LastEditTime : 2024-02-04 13:36:53
 -->
 <template>
   <div
@@ -56,7 +56,7 @@
             @mouseleave="handleMouseLeave"
           >
             <div class="g-upload-image-content">
-              <img v-if="imgUrl && !iserr" :src="imgUrl">
+              <img v-if="imgUrl && !iserr" v-lazy="imgUrl">
               <div v-else class="g-upload-tip">
                 <n-icon size="60">
                   <IconImg />
@@ -110,7 +110,7 @@
               <div class="uploaded-image-list">
                 <div v-for="i in imageLists" :key="i" @click="handSelectImg(i.key)">
                   <img
-                    :src="VITE_LOAD_URL + i.key"
+                    v-lazy="VITE_LOAD_URL + i.key"
                     :style="{ maxWidth: '100%' }"
                   >
                 </div>
@@ -151,7 +151,7 @@
               </n-upload>
               <div v-for="i in projectImages" :key="i" @click="handSelectImg(i.path)">
                 <img
-                  :src="`${VITE_LOAD_URL}${i.path}`"
+                  v-lazy="`${VITE_LOAD_URL}${i.path}`"
                   :style="{ maxWidth: '100%' }"
                 >
               </div>

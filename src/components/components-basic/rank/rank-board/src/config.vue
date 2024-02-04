@@ -4,13 +4,13 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2023-12-06 11:50:43
- * @LastEditTime : 2023-12-06 16:05:04
+ * @LastEditTime : 2024-02-02 14:32:11
 -->
 <template>
   <div class="setting-panel-gui">
-    <chartGenerateConfig v-if="config.generate.configType === 'basic'" :config="config" chart-type="none" />
+    <chartGenerateConfig v-if="config.generate.configType === GenerateType.基础" :config="config" chart-type="none" />
     <el-tabs
-      v-else-if="config.generate.configType === 'all'"
+      v-else-if="config.generate.configType === GenerateType.全量"
       key="cardleft"
       tab-position="left"
       type="card"
@@ -176,6 +176,7 @@ export default defineComponent({
       fontWeights: GlFontWeights,
       lineStyles: GlLineStyles,
       backgroundSies: GlBackgroundSies,
+      GenerateType: EGenerateType,
     }
   },
 })

@@ -139,7 +139,7 @@ const nextPreviewTemplate = () => {
               :class="{ selected: tpl?.id === template.id }"
               @click="togglePreviewTemplate(tpl, idx)"
             >
-              <img :src="tpl.snapshot" class="preview-small-img">
+              <img v-lazy="tpl.snapshot" class="preview-small-img">
               <div class="preview-screen-name">{{ tpl.name }}</div>
             </div>
           </div>
@@ -147,7 +147,7 @@ const nextPreviewTemplate = () => {
       </div>
       <div class="preview-gif">
         <div class="gif-wp">
-          <img class="snapshot-gif" :src="template.snapshot">
+          <img v-lazy="template.snapshot" class="snapshot-gif">
           <n-icon class="prev-icon" @click="prevPreviewTemplate">
             <IconArrowLeft />
           </n-icon>

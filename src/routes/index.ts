@@ -4,7 +4,7 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2023-10-31 11:13:02
- * @LastEditTime : 2024-01-31 10:23:53
+ * @LastEditTime : 2024-01-26 14:44:50
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import { globalConfig } from '@/config'

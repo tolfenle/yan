@@ -4,7 +4,7 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2023-10-31 11:13:02
- * @LastEditTime : 2024-02-04 12:26:54
+ * @LastEditTime : 2024-01-31 09:29:00
 -->
 <template>
   <div>
@@ -40,46 +40,37 @@
     </div>
     <div class="project-header">
       <div class="project-title">
-        <h2>{{ group ? group.name : '' }}<span class="datav-tip-font">({{ page.total || '暂无' }})</span></h2>
+        <h2>{{ group ? group.name : '' }}<span class="datav-tip-font">({{ proScreens.length || '暂无' }})</span></h2>
       </div>
       <div class="header-manager">
-        <div class="search-wrapper">
-          <n-pagination
-            :item-count="page.total"
-            :page-sizes="[20, 30, 40, 50, 60]"
-            show-size-picker
-            :page-slot="8"
-            :page="page.page"
-            @update:page="handlePageChange"
-            @update:page-size="handlePageSizeChange"
-          />
-          <div class="search">
-            <input
-              v-model.trim="searchText"
-              clearable
-              class="search-input"
-              placeholder="搜索"
-            >
-          </div>
-          <n-icon class="icon-search">
-            <IconSearch @click="getProjectScreen" />
-          </n-icon>
-
-          <n-dropdown
-            :options="sortOpts"
-            :show-arrow="true"
-            @select="handleSortChange"
+        <n-button secondary type="info" @click="handCheckScreen">构建部署包</n-button>
+        <n-button type="info" secondary @click="handBuildList">构建记录</n-button>
+        <div class="search">
+          <input
+            v-model.trim="searchText"
+            clearable
+            class="search-input"
+            placeholder="搜索"
           >
-            <div class="sort-type">
-              <span class="sort-text" :title="sorts[sort]">
-                {{ sorts[sort] }}
-              </span>
-              <n-icon class="icon-arrow">
-                <IconArrowDown />
-              </n-icon>
-            </div>
-          </n-dropdown>
         </div>
+        <n-icon class="icon-search">
+          <IconSearch @click="getProjectScreen" />
+        </n-icon>
+
+        <n-dropdown
+          :options="sortOpts"
+          :show-arrow="true"
+          @select="handleSortChange"
+        >
+          <div class="sort-type">
+            <span class="sort-text" :title="sorts[sort]">
+              {{ sorts[sort] }}
+            </span>
+            <n-icon class="icon-arrow">
+              <IconArrowDown />
+            </n-icon>
+          </div>
+        </n-dropdown>
       </div>
     </div>
     <n-spin :show="showLoading">
@@ -100,6 +91,7 @@
       </div>
     </n-spin>
     <publish-screen v-model="visiblePublish" :screen-id="publishAppId" />
+    <ScreenRlease v-model="showRelease" :project-id="group?.depId" :screen="group" />
     <CreateEmptyScreen v-model="showNewScreen" :project-id="group?.depId" @request="getProjectScreen" />
     <CreateTempScreen
       v-model="showTempScreen"
@@ -116,16 +108,17 @@ import {
   defineComponent, ref, PropType,
   watch, toRef, provide,
 } from 'vue'
-import { NButton, useMessage, NSpin, NPagination } from 'naive-ui'
+import { NButton, NCheckboxGroup, NCheckbox, useMessage, NSpin } from 'naive-ui'
 import { ProjectGroup, ProjectTemplate } from '@/domains/project'
 import { IconSearch, IconArrowDown } from '@/icons'
 import MyScreen from './my-screen.vue'
 import PublishScreen from './publish-screen.vue'
 import { projectListInjectionKey } from './config'
-import { getScreenPage } from '@/api/screen'
+import { getScreenByProject } from '@/api/screen'
 import { getSysTemplates } from '@/api/templates'
 import sysLogo from '@/assets/img/home/sys.webp'
 import publicLogo from '@/assets/img/home/public.webp'
+import ScreenRlease from './export-screen.vue'
 import CreateEmptyScreen from './create-empty-screen.vue'
 import CreateTempScreen from './create-temp-screen.vue'
 
@@ -139,10 +132,10 @@ export default defineComponent({
     IconSearch,
     IconArrowDown,
     NButton,
+    ScreenRlease,
     CreateEmptyScreen,
     CreateTempScreen,
     NSpin,
-    NPagination,
   },
   props: {
     group: Object as PropType<ProjectGroup>,
@@ -167,31 +160,18 @@ export default defineComponent({
 
     const proScreens = ref([])
     const showLoading = ref(false)
-    const page = ref({
-      page: 1,
-      size: 20,
-      total: 0,
-    })
     const getProjectScreen = async () => {
       try {
-        const res = await getScreenPage({
-          page: page.value.page,
-          size: page.value.size,
-          groupId: props.group?.depId,
+        const res = await getScreenByProject({
+          id: props.group?.depId,
           name: searchText.value,
           order: sort.value,
         })
-
         showLoading.value = true
-        if (res.code === 1000) {
-          proScreens.value = res.data?.list
-          page.value.total = res.data?.pagination?.total || 0
-        }
-        else {
+        if (res.code === 1000)
+          proScreens.value = res.data
+        else
           nMessage.error(res.message)
-          page.value.total = 0
-          proScreens.value = []
-        }
       } catch (error) {
         showLoading.value = false
       }
@@ -199,7 +179,6 @@ export default defineComponent({
     }
     watch(() => props.group, val => {
       if (val) {
-        page.value.page = 1
         getProjectScreen()
       }
     }, { deep: true })
@@ -228,7 +207,20 @@ export default defineComponent({
     }
     getSystemTemplate()
 
-    // UN_PUBLISH ======================= 构建部署包 ===================================
+    //======================= 构建部署包 ===================================
+    // 选择需要构建的应用
+    const handCheckScreen = () => {
+      nMessage.warning('单/多应用独立部署暂未开源,如有需要可在右下角意见反馈中留下您的联系方式', {
+        duration: 0,
+        closable: true,
+        showIcon: false,
+      })
+    }
+    const showRelease = ref(false)
+    const handBuildList = () => {
+      showRelease.value = true
+    }
+
     //======================= 新建空白应用 ===================================
     const showNewScreen = ref(false)
     const handCreateNew = () => {
@@ -240,16 +232,6 @@ export default defineComponent({
     const handCreateByTemplate = (tpl: ProjectTemplate, idx: number) => {
       showTempScreen.value = true
       useTemplate.value = tpl
-    }
-
-    const handlePageSizeChange = (size: number) => {
-      page.value.size = size
-      getProjectScreen()
-    }
-    const handlePageChange = (cur_page: number) => {
-      console.log('cur_page: ', cur_page)
-      page.value.page = cur_page
-      getProjectScreen()
     }
 
     return {
@@ -264,17 +246,17 @@ export default defineComponent({
       templatesList,
       sysLogo,
       publicLogo,
-      showNewScreen,
-      showTempScreen,
-      useTemplate,
-      showLoading,
-      page,
-      handCreateByTemplate,
-      handlePageSizeChange,
-      handlePageChange,
+      showRelease,
       handleSortChange,
+      handCheckScreen,
+      handBuildList,
       handCreateNew,
       getProjectScreen,
+      showNewScreen,
+      showTempScreen,
+      handCreateByTemplate,
+      useTemplate,
+      showLoading,
     }
   },
 })

@@ -4,7 +4,7 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2023-11-10 18:32:30
- * @LastEditTime : 2024-01-19 15:58:40
+ * @LastEditTime : 2024-02-04 14:02:44
  */
 import { defineStore } from 'pinia'
 import { ComType, DatavComponent } from '@/components/_models/datav-component'
@@ -733,6 +733,7 @@ export const useComStore = defineStore('com', {
      */
     async cancelGroup() {
       const scoms = this.selectedComs
+      console.log('scoms: ', scoms)
       const sids = scoms.map(m => m.id)
       const pid = scoms[0].parentId
       const coms = scoms.flatMap(m => {

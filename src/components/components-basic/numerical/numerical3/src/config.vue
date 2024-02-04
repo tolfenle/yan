@@ -8,7 +8,7 @@
 -->
 <template>
   <chartGenerateConfig
-    v-if="config.generate.configType === 'basic'"
+    v-if="config.generate.configType === GenerateType.基础"
     :config="config"
     chart-type="none"
   >
@@ -38,7 +38,7 @@
     </g-field>
   </chartGenerateConfig>
   <el-tabs
-    v-else-if="config.generate.configType === 'all'"
+    v-else-if="config.generate.configType === GenerateType.全量"
     key="cardleft"
     tab-position="left"
     type="card"
@@ -346,6 +346,7 @@ export default defineComponent({
       orients: GlOrients,
       waperEffects: GlWaperEffects,
       operators: GlOperators,
+      GenerateType: EGenerateType,
       numerical3Types: [
         {
           id: ENumType.图数值,

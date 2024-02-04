@@ -182,7 +182,9 @@ export default defineComponent({
     }
 
     const resize = (config: PageConfig) => {
-      switch (config.zoomMode) {
+      console.log('Number(config.zoomMode): ', Number(config.zoomMode))
+
+      switch (Number(config.zoomMode)) {
         case ZoomMode.auto:
           resizeAuto(config.width, config.height)
           break
@@ -216,6 +218,7 @@ export default defineComponent({
       setStyle(document.body, {
         width: `${config.width}px`,
         height: `${config.height}px`,
+        overflow: 'hidden',
         backgroundImage: `url(${setUrl(pageConfig.value.bgimage)})`,
         backgroundColor: pageConfig.value.bgcolor,
         backgroundRepeat: 'no-repeat',

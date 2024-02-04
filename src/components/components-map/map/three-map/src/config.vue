@@ -14,6 +14,7 @@ const config = toRef(props.com, 'config')
 
 const showModal = ref(false)
 const showMapSelect = ref(false)
+const GenerateType = EGenerateType
 
 let map
 const handModelConfig = () => {
@@ -45,7 +46,7 @@ const handAddRoate = () => {
 </script>
 
 <template>
-  <template v-if="config.generate.configType === 'basic'">
+  <template v-if="config.generate.configType === GenerateType.基础">
     <chartGenerateConfig chart-type="none" :config="config">
       <g-field :level="2" label-span="6" label="弹出配置">
         <n-button size="small" style="width: 100%;" @click="handModelConfig">在弹窗中配置</n-button>
@@ -134,7 +135,7 @@ const handAddRoate = () => {
     </chartGenerateConfig>
   </template>
   <el-tabs
-    v-else-if="config.generate.configType === 'all'"
+    v-else-if="config.generate.configType === GenerateType.全量"
     key="cardleft"
     tab-position="left"
     type="card"

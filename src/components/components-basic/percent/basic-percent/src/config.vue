@@ -4,10 +4,10 @@
  * @description  :
  * @updateInfo   :itemGap
  * @Date         : 2023-11-23 12:17:06
- * @LastEditTime : 2023-11-23 16:56:55
+ * @LastEditTime : 2024-02-02 14:37:23
 -->
 <template>
-  <chartGenerateConfig v-if="config.generate.configType === 'basic'" :config="config" chart-type="percent">
+  <chartGenerateConfig v-if="config.generate.configType === GenerateType.基础" :config="config" chart-type="percent">
     <g-field :level="2" label="圆环尺寸">
       <g-input-number
         v-model="config.generate.radius"
@@ -44,7 +44,7 @@
     </g-field>
   </chartGenerateConfig>
   <el-tabs
-    v-else-if="config.generate.configType === 'all'"
+    v-else-if="config.generate.configType === GenerateType.全量"
     key="cardleft"
     tab-position="left"
     type="card"
@@ -121,7 +121,7 @@ export default defineComponent({
     const configType = ref('basic')
 
     const handleAddSeriesItem = () => {
-      config.value.series.push(new BasicPercentSeries(`系列${config.value.series.length + 1}`))
+      // config.value.series.push(new BasicPercentSeries(`系列${config.value.series.length + 1}`))
     }
 
     const handRemoveSeriesItem = index => {
@@ -134,6 +134,7 @@ export default defineComponent({
       handleAddSeriesItem,
       handRemoveSeriesItem,
       fontFamilys: GlFontFamilys,
+      GenerateType: EGenerateType,
     }
   },
 })

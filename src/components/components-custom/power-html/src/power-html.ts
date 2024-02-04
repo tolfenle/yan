@@ -4,7 +4,7 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2024-01-26 17:08:44
- * @LastEditTime : 2024-01-26 18:02:58
+ * @LastEditTime : 2024-02-01 11:36:07
  */
 import { DatavComponent } from '@/components/_models/datav-component'
 import {
@@ -22,7 +22,7 @@ export class PowerHtml extends DatavComponent {
     generate: {
       ..._.cloneDeep(useGenerateConfig({ sameColor: false })),
     },
-    html: `const html = '<div style="background: green;width: 100%;height: 100%;"></div>'; return html`,
+    html: `const html = '<div style="background: green;width: 100%;height: 100%;font-size: 22px;">自定义HTML，可通过平台方式获取数据、组件实例、通用样式</div>'; return html`,
     global: {
       background: useChartColor({ isCss: true, value: '#000' }),
       border: useCssBorder(),

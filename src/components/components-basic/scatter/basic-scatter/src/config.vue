@@ -7,9 +7,9 @@
  * @LastEditTime : 2024-01-02 17:38:44
 -->
 <template>
-  <chartGenerateConfig v-if="config.generate.configType === 'basic'" chart-type="none" :config="config" />
+  <chartGenerateConfig v-if="config.generate.configType === GenerateType.基础" chart-type="none" :config="config" />
   <el-tabs
-    v-else-if="config.generate.configType === 'all'"
+    v-else-if="config.generate.configType === GenerateType.全量"
     key="cardleft"
     tab-position="left"
     type="card"
@@ -133,6 +133,7 @@ export default defineComponent({
       fontFamilys: GlFontFamilys,
       GlScatters,
       GlScatterFills,
+      GenerateType: EGenerateType,
     }
   },
 })

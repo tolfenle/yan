@@ -5,7 +5,7 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2023-12-11 18:08:49
- * @LastEditTime : 2024-01-26 17:40:19
+ * @LastEditTime : 2024-02-01 11:31:37
  */
 import { ComDataType } from '../system-components'
 const COM_CDN = import.meta.env.VITE_APP_CDN
@@ -18,8 +18,8 @@ export const title: ComDataType = {
     {
       name: 'VPowerHtml',
       alias: '自定义HTML',
-      img: `${COM_CDN}/timer-160-116.png`,
-      thum: `${COM_CDN}/timer-370-208.png`,
+      img: `${COM_CDN}/custom-html-332-144.jpg`,
+      thum: `${COM_CDN}/custom-html-332-144.jpg`,
       used: true,
     },
     {

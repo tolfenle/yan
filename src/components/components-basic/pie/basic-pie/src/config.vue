@@ -18,14 +18,15 @@ const props = defineProps({
   },
 })
 const config = toRef(props.com, 'config')
+const GenerateType = EGenerateType
 </script>
 
 <template>
-  <template v-if="config.generate.configType === 'basic'">
+  <template v-if="config.generate.configType === GenerateType.基础">
     <chartGenerateConfig chart-type="pie" :config="config" />
   </template>
   <el-tabs
-    v-else-if="config.generate.configType === 'all'"
+    v-else-if="config.generate.configType === GenerateType.全量"
     key="cardleft"
     tab-position="left"
     type="card"

@@ -7,9 +7,9 @@
  * @LastEditTime : 2024-01-30 11:58:08
 -->
 <template>
-  <chartGenerateConfig v-if="config.generate.configType === 'basic'" :config="config" />
+  <chartGenerateConfig v-if="config.generate.configType === GenerateType.基础" :config="config" />
   <el-tabs
-    v-else-if="config.generate.configType === 'all'"
+    v-else-if="config.generate.configType === GenerateType.全量"
     key="cardleft"
     tab-position="left"
     type="card"
@@ -308,6 +308,7 @@ export default defineComponent({
       handRemoveSeriesItem,
       fontFamilys: GlFontFamilys,
       shadowQualitys: GlShadowQualitys,
+      GenerateType: EGenerateType,
     }
   },
 })

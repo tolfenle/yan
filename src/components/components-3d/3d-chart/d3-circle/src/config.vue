@@ -4,12 +4,12 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2024-01-12 09:34:46
- * @LastEditTime : 2024-01-25 18:10:07
+ * @LastEditTime : 2024-02-02 14:20:14
 -->
 <template>
-  <chartGenerateConfig v-if="config.generate.configType === 'basic'" chart-type="null" :config="config" />
+  <chartGenerateConfig v-if="config.generate.configType === GenerateType.基础" chart-type="null" :config="config" />
   <el-tabs
-    v-else-if="config.generate.configType === 'all'"
+    v-else-if="config.generate.configType === GenerateType.全量"
     key="cardleft"
     tab-position="left"
     type="card"
@@ -312,6 +312,7 @@ const fontWeights = GlFontWeights
 const hAligns = GlHAligns
 const vAligns = GlVAligns
 const highLayouts = GlHighLayouts
+const GenerateType = EGenerateType
 
 const { handChangeCode, updateCode } = useFormatterHook(props.com.config)
 </script>

@@ -4,7 +4,7 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2023-10-31 11:13:00
- * @LastEditTime : 2023-12-12 14:54:24
+ * @LastEditTime : 2024-02-02 14:36:14
  */
 import { DatavEChartsComponent, DatavChartSeries } from '@/components/_models/datav-component'
 import {
@@ -25,9 +25,9 @@ export class WaterBallSeries extends DatavChartSeries {
 }
 
 /**
- * WaterBall
+ * WaterSvg
  */
-export class WaterBall extends DatavEChartsComponent {
+export class WaterSvg extends DatavEChartsComponent {
   config = {
     generate: {
       ..._.cloneDeep(useGenerateConfig({ sameColor: false })),
@@ -89,7 +89,7 @@ export class WaterBall extends DatavEChartsComponent {
   disActions?: string[]
 
   constructor() {
-    super('WaterBall', { w: 500, h: 300 })
+    super('WaterSvg', { w: 500, h: 300 })
 
     this.initData()
   }
@@ -141,4 +141,4 @@ export class WaterBall extends DatavEChartsComponent {
   }
 }
 
-export default WaterBall
+export default WaterSvg

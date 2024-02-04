@@ -4,7 +4,7 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2023-12-08 15:08:26
- * @LastEditTime : 2024-01-30 12:03:55
+ * @LastEditTime : 2024-01-31 14:00:51
 -->
 <template>
   <div
@@ -15,19 +15,6 @@
       },
     ]"
   >
-    <!-- 输入地图JSON地址 -->
-    <!-- <n-input
-      :value="modelValue"
-      size="small"
-      placeholder="请输入地图地址"
-      @update:value="handleInput"
-    >
-      <template #prefix>
-        <n-icon>
-          <IconLink />
-        </n-icon>
-      </template>
-    </n-input> -->
     <NCascader
       v-model:value="map"
       placeholder="选择地图范围"
@@ -38,28 +25,17 @@
       label-field="name"
       @update:value="handleUpdateValue"
     />
-    <!-- <gl-map-area v-model="showSelect" /> -->
   </div>
 </template>
 
 <script lang='ts' setup>
-import { Ref, computed, ref, watch } from 'vue'
+import { ref } from 'vue'
 import {
-  useMessage,
-  NButton,
-  NInput,
-  NIcon,
   NCascader,
-  NSpin,
 } from 'naive-ui'
 import { UPDATE_MODEL_EVENT } from '@/utils/constants'
-import { generateId } from '@/utils/util'
-import { validAllowImg } from '@/utils/upload-util'
-import { IconLink } from '@/icons'
-import { storeToRefs } from 'pinia'
 import { useEditorStore } from '@/store/editor'
 import axios from 'axios'
-import * as echarts from 'echarts'
 import { registerMapAsync } from '@/components/_utils/echarts-util'
 const props = defineProps({
   modelValue: String,
@@ -77,8 +53,6 @@ const emits = defineEmits([UPDATE_MODEL_EVENT])
 
 const { setUrl } = useEnvUrl()
 const map = ref(props.modelValue)
-
-const editorStore = useEditorStore()
 
 const options = ref([])
 onMounted(async() => {

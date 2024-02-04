@@ -4,7 +4,7 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2023-10-31 11:13:00
- * @LastEditTime : 2024-01-10 12:00:55
+ * @LastEditTime : 2024-02-04 13:39:34
  */
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -21,6 +21,7 @@ import 'swiper/css/bundle'
 import Highcharts from 'highcharts'
 import Highcharts3D from 'highcharts/highcharts-3d'
 import HighchartsVue from 'highcharts-vue'
+import Vue3Lazyload from 'vue3-lazyload'
 
 import DatavCharts from '@/components'
 import router from './routes'
@@ -37,5 +38,9 @@ app.use(createPinia())
 app.use(router)
 app.use(ColorPicker)
 app.use(HighchartsVue, { tagName: 'HightchartsVue' })
+app.use(Vue3Lazyload, {
+  loading: '', // 加载中的占位图
+  error: '', // 图片加载失败时显示的图像
+})
 
 app.mount('#app')

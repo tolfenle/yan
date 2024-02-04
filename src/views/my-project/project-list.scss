@@ -242,53 +242,63 @@
       margin-right: 16px;
     }
 
-    .search {
-      transform: translateX(30px);
+    .search-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-      .search-input {
-        @include utils-ellipsis;
+      .n-pagination{
 
-        background: var(--datav-bgcolor-2);
-        color: #fff;
-        padding: 0 10px;
-        line-height: 30px;
-        height: 30px;
-        padding-right: 30px;
-        border: 1px solid transparent;
-        transition: 0.2s;
+      }
 
-        &:hover,
-        &:focus {
-          border: var(--datav-border-primary);
-          box-shadow: var(--datav-shadow);
+      .search {
+        transform: translateX(30px);
+
+        .search-input {
+          @include utils-ellipsis;
+
+          background: var(--datav-bgcolor-2);
+          color: #fff;
+          padding: 0 10px;
+          line-height: 30px;
+          height: 30px;
+          padding-right: 30px;
+          border: 1px solid transparent;
+          transition: 0.2s;
+
+          &:hover,
+          &:focus {
+            border: var(--datav-border-primary);
+            box-shadow: var(--datav-shadow);
+          }
         }
       }
-    }
 
-    .icon-search {
-      padding: 0 40px 0 4px;
-      color: var(--datav-font-color);
-      cursor: pointer;
-      z-index: 1;
-    }
-
-    .sort-type {
-      @include utils-ellipsis;
-
-      display: inline-block;
-      color: var(--datav-font-color);
-      line-height: 30px;
-      cursor: pointer;
-      font-size: 14px;
-      min-width: 100px;
-
-      .icon-arrow {
-        font-size: 14px;
-        margin-left: 4px;
+      .icon-search {
+        padding: 0 40px 0 4px;
+        color: var(--datav-font-color);
+        cursor: pointer;
+        z-index: 1;
       }
 
-      &:hover {
-        color: var(--datav-main-color);
+      .sort-type {
+        @include utils-ellipsis;
+
+        display: inline-block;
+        color: var(--datav-font-color);
+        line-height: 30px;
+        cursor: pointer;
+        font-size: 14px;
+        min-width: 100px;
+
+        .icon-arrow {
+          font-size: 14px;
+          margin-left: 4px;
+        }
+
+        &:hover {
+          color: var(--datav-main-color);
+        }
       }
     }
   }
@@ -300,6 +310,8 @@
   align-content: flex-start;
   user-select: none;
   padding-bottom: 50px;
+  height: calc(100vh - 306px);
+  overflow-y: auto;
 
   .screen-item {
     position: relative;

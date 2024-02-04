@@ -21,6 +21,7 @@ const props = defineProps({
 const config = toRef(props.com, 'config')
 const shapeTypes = GlEchartIcons
 const animationEasings = GlAnimationEasings
+const GenerateType = EGenerateType
 
 const codeCopy = ref('')
 const handChangeCode = val => {
@@ -57,13 +58,13 @@ const demoParam = `param={
 </script>
 
 <template>
-  <chartGenerateConfig v-if="config.generate.configType === 'basic'" :config="config" chart-type="none">
+  <chartGenerateConfig v-if="config.generate.configType === GenerateType.基础" :config="config" chart-type="none">
     <g-field :level="2" label-span="6" label="图形样式">
       <g-select v-model="config.global.shape" :data="shapeTypes" />
     </g-field>
   </chartGenerateConfig>
   <el-tabs
-    v-else-if="config.generate.configType === 'all'"
+    v-else-if="config.generate.configType === GenerateType.全量"
     key="cardleft"
     tab-position="left"
     type="card"

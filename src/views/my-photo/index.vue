@@ -38,7 +38,7 @@
       <n-tab-pane name="1" tab="图片">
         <div v-for="i in typeObj.images" :key="i" class="img-list">
           <img
-            :src="`${loadUrl}${i.path}`"
+            v-lazy="`${loadUrl}${i.path}`"
             :style="{ maxWidth: '100%' }"
           >
           <IconDelete @click="handDelete(i)" />
@@ -59,7 +59,7 @@
       <n-tab-pane name="3" tab="其它">
         <div v-for="i in typeObj.others" :key="i" class="img-list">
           <img
-            :src="`${loadUrl}${i.path}`"
+            v-lazy="`${loadUrl}${i.path}`"
             :style="{ maxWidth: '100%' }"
           >
           <IconDelete @click="handDelete(i)" />
@@ -264,7 +264,7 @@ export default defineComponent({
     position: relative;
     padding: 4px;
 
-    img{
+    img {
       max-width: 100%;
       max-height: 100%;
     }

@@ -4,6 +4,14 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2024-01-09 16:39:12
+ * @LastEditTime : 2024-01-31 15:38:47
+ */
+/*
+ * @Author       : wfl
+ * @LastEditors  : wfl
+ * @description  :
+ * @updateInfo   :
+ * @Date         : 2024-01-09 16:39:12
  * @LastEditTime : 2024-01-15 17:25:03
  */
 import { bar,barChart } from './components/bar'

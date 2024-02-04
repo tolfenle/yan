@@ -6,6 +6,12 @@
  * @Date         : 2023-10-19 10:09:50
  * @LastEditTime : 2024-01-24 14:10:17
  */
+export enum EGenerateType {
+  基础 = 'basic',
+  全量 = 'all',
+  系列 = 'series'
+}
+
 export const chartGenerateColor = ['#85A5FF', '#597EF7', '#2F54EB', '#1D39C4', '#10239E', '#061178', '#030852']
 
 export const useGenerateConfig = (param = {}, simple = false) => {
@@ -39,7 +45,7 @@ export const useGenerateConfig = (param = {}, simple = false) => {
     },
     bgAnimate: '',
     bgImage: '',
-    configType: 'basic',
+    configType: EGenerateType.基础,
     ...chartGenerate,
   }
 }

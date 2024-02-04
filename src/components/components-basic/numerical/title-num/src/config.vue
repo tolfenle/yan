@@ -7,9 +7,9 @@
  * @LastEditTime: 2022-09-16 11:09:02
 -->
 <template>
-  <chartGenerateConfig v-if="config.generate.configType === 'basic'" :config="config" chart-type="none" />
+  <chartGenerateConfig v-if="config.generate.configType === GenerateType.基础" :config="config" chart-type="none" />
   <el-tabs
-    v-else-if="config.generate.configType === 'all'"
+    v-else-if="config.generate.configType === GenerateType.全量"
     key="cardleft"
     tab-position="left"
     type="card"
@@ -177,6 +177,7 @@ export default defineComponent({
       navplacements: GlNavplacements,
       navdateTypes: GlNavdateTypes,
       fillTypes: GlFillTypes,
+      GenerateType: EGenerateType,
       upDownIcons: [],
     }
   },

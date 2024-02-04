@@ -11,7 +11,6 @@
 
 <script lang='ts'>
 import { defineComponent, PropType, computed, toRef } from 'vue'
-import { groupBy } from 'lodash-es'
 import VChart from 'vue-echarts'
 import * as echarts from 'echarts'
 import { use } from 'echarts/core'
@@ -22,6 +21,7 @@ import { useDataCenter, getFieldMap } from '@/components/_mixins/use-data-center
 import { useApiStore } from '@/store/api'
 import { useEventStore } from '@/store/event'
 import { PowerChart } from './power-chart'
+import { cloneDeep } from 'lodash-es'
 
 use([
   CanvasRenderer,
@@ -70,8 +70,26 @@ export default defineComponent({
       }
     })
 
-
-    const getSeries = bar => {
+    const fixAxis = (option, xconfig, key) => {
+      const { generate } = config.value
+      let cusxAxis = cloneDeep(option?.[key])
+      const sysConfig = key === 'xAxis' ? parseXaxisConfig(xconfig, generate) : parseYaxisConfig(xconfig, generate)
+      if (cusxAxis) {
+        if (Array.isArray(cusxAxis)) {
+          cusxAxis.forEach((ax, index) => {
+            cusxAxis[index] = {
+              ...sysConfig,
+              ...ax,
+            }
+          })
+        } else {
+          cusxAxis = {
+            ...sysConfig,
+            ...cusxAxis,
+          }
+        }
+        option[key] = cusxAxis
+      }
     }
 
     const option = computed(() => {
@@ -86,7 +104,8 @@ export default defineComponent({
 
       const func = new Function('param','echarts', `${custom.code}; ${custom.code ? 'return option || options || {}' : ''}`)
       const opt = func({ data: dv_data.value, color: generate.color, textStyle: generate.textStyle }, echarts) || {}
-
+      fixAxis(opt, xAxis, 'xAxis')
+      fixAxis(opt, yAxis, 'yAxis')
       const opts = {
         color: generate.color,
         textStyle: {
@@ -105,17 +124,8 @@ export default defineComponent({
         //   ...parseTooltipConfig(tooltip),
         // },
         legend: parseLegendConfig(legend),
-        xAxis: {
-          ...parseXaxisConfig(xAxis, generate),
-          ...opt?.xAxis,
-        },
-        yAxis: {
-          ...parseYaxisConfig(yAxis, generate),
-          ...opt?.yAxis,
-        },
         ...parseAnimation(animation),
       }
-
       return opts as any
     })
 

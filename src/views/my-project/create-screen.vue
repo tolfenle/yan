@@ -31,7 +31,7 @@
             <div class="template-list">
               <div v-for="(tpl, idx) in templatesSys" :key="tpl?.id" class="template-item">
                 <div class="template-image">
-                  <img :src="tpl.snapshot" alt="" class="preview-image">
+                  <img v-lazy="tpl.snapshot" alt="" class="preview-image">
                   <div class="template-mask">
                     <n-button
                       type="primary"
@@ -61,7 +61,7 @@
             <div class="template-list">
               <div v-for="(tpl, idx) in templates" :key="tpl?.id" class="template-item">
                 <div class="template-image">
-                  <img :src="tpl.snapshot" alt="" class="preview-image">
+                  <img v-lazy="tpl.snapshot" alt="" class="preview-image">
                   <div class="template-mask">
                     <n-button
                       type="primary"
@@ -159,7 +159,7 @@
               :class="{ selected: tpl?.id === template.id }"
               @click="togglePreviewTemplate(tpl, idx)"
             >
-              <img :src="tpl.snapshot" class="preview-small-img">
+              <img v-lazy="tpl.snapshot" class="preview-small-img">
               <div class="preview-screen-name">{{ tpl.name }}</div>
             </div>
           </div>
@@ -167,7 +167,7 @@
       </div>
       <div class="preview-gif">
         <div class="gif-wp">
-          <img class="snapshot-gif" :src="template.snapshot">
+          <img v-lazy="template.snapshot" class="snapshot-gif">
           <n-icon class="prev-icon" @click="prevPreviewTemplate">
             <IconArrowLeft />
           </n-icon>

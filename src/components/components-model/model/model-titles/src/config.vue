@@ -14,6 +14,7 @@ const props = defineProps({
 })
 
 const config = toRef(props.com, 'config')
+const GenerateType = EGenerateType
 
 const showModal = ref(false)
 let map
@@ -44,22 +45,22 @@ watch(() => config.value.effect, val => {
 </script>
 
 <template>
-  <template v-if="config.generate.configType === 'basic'">
+  <template v-if="config.generate.configType === GenerateType.基础">
     <chartGenerateConfig chart-type="none" :config="config">
       <g-field :level="2" label-span="6" label="弹出配置">
         <n-button size="small" style="width: 100%;" @click="handModelConfig">在弹窗中配置</n-button>
       </g-field>
-       <g-field :level="2" label-span="6" label="背景图">
-          <g-upload-image v-model="config.global.backgroundImg" />
-       </g-field>
-       <g-field :level="2" label-span="6" label="背景图">
-          <g-color-picker v-model="config.scene.backgroundColor" />
-       </g-field>
+      <g-field :level="2" label-span="6" label="背景图">
+        <g-upload-image v-model="config.global.backgroundImg" />
+      </g-field>
+      <g-field :level="2" label-span="6" label="背景图">
+        <g-color-picker v-model="config.scene.backgroundColor" />
+      </g-field>
       <!-- map.container.style.backgroundImage = "none" -->
     </chartGenerateConfig>
   </template>
   <el-tabs
-    v-else-if="config.generate.configType === 'all'"
+    v-else-if="config.generate.configType === GenerateType.全量"
     key="cardleft"
     tab-position="left"
     type="card"
