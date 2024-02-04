@@ -45,7 +45,7 @@
 - [ ] 应用导入/导出
 - [ ] 蓝图编辑器(简单、高效、可视化的事件配置方式)
 - [ ] 二维模式更多样式地图组件
-- [ ] 三维模式微服务化(三维配置项太多，在目前的模式下配置不够灵活，将采用微服务的方式和平台融合，微服务目前考虑使用[京东MicroApp]([https://micro-zoe.github.io/micro-app/](https://micro-zoe.github.io/micro-app/))，将提供模型在线编辑/预览、点位标记(点、线面、墙体、管道、模型等在线标注)、路线规划等
+- [ ] 三维模式微服务化(三维配置项太多，在目前的模式下配置不够灵活，将采用微服务的方式和平台融合，微服务目前考虑使用<a href="https://micro-zoe.github.io/micro-app/">京东MicroApp</a>，将提供模型在线编辑/预览、点位标记(点、线面、墙体、管道、模型等在线标注)、路线规划等
 ### 平台截图
 ![](https://datav.ikingtech.com/图片1.png#id=hKx7Z&originHeight=908&originWidth=1911&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 
