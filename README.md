@@ -1,17 +1,20 @@
-[     ](https://datav.ikingtech.com/)![](https://datav.ikingtech.com/logo.png#height=120&id=nSxSU&originHeight=286&originWidth=286&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=&width=120)[   ](https://datav.ikingtech.com/)
-### 金合可视化平台
-#### 拖拽式可视化大屏低代码平台
-[官网](http://www.ikingtech.com/)
-|
-[文档](https://datavdoc.ikingtech.com)
-|
-[在线演示](https://datav.ikingtech.com)
-|
-[Node服务端](https://gitee.com/ikingtech/iking-datav-server)
-|
-[提交Bug](https://gitee.com/ikingtech/iking-datav/issues)
-演示环境账号：iking 密码：iking.com  演示环境账号：iking 密码：iking.com
-
+<div align="center">
+  <a href="https://datav.ikingtech.com/">
+    <img src="https://datav.ikingtech.com/logo.png" alt="Logo" width="120" height="120">
+  </a>
+  <h3>金合可视化平台</h3>
+  <h4>拖拽式可视化大屏低代码平台</h4>
+    [官网](http://www.ikingtech.com/)
+    |
+    [文档](https://datavdoc.ikingtech.com)
+    |
+    [在线演示](https://datav.ikingtech.com)
+    |
+    [Node服务端](https://gitee.com/ikingtech/iking-datav-server)
+    |
+    [提交Bug](https://gitee.com/ikingtech/iking-datav/issues)
+    演示环境账号：iking 密码：iking.com  演示环境账号：iking 密码：iking.com
+</div>
 ## 简介
 
 金合可视化平台是一个通过拖拽配置生成可视化大屏的低代码平台。它包含项目管理、应用管理、数据源管理、过滤器管理、收藏、模板市场、应用独立部署等功能。平台提供了丰富的图表组件、地图组件、媒体组件、动画组件和常用的大屏页面组件，支持加载三维模型，支持事件配置。用户可以通过简单的鼠标拖拽组件放入页面容器，配置组件样式，组件数据。即可完成一个大屏页面的开发。
@@ -24,13 +27,13 @@
 
 ## 技术栈
 
-💪 Vue 3.0+
-⚡ Vite 3.0+
-🍍 Pinia 2.0+
-🔥 TypeScript 4.0+
-🔥 ECharts 5.0+
-🔥 mars3d 3.6+
-🔥 Threejs 0.159.0
+* 💪 Vue 3.0+
+* ⚡ Vite 3.0+
+* 🍍 Pinia 2.0+
+* 🔥 TypeScript 4.0+
+* 🔥 ECharts 5.0+
+* 🔥 mars3d 3.6+
+* 🔥 Threejs 0.159.0
 
 ## 开发计划
 - [x] 应用独立部署
