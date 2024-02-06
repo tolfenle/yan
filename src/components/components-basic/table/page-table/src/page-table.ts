@@ -4,7 +4,7 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2024-01-31 14:54:34
- * @LastEditTime : 2024-02-02 17:58:35
+ * @LastEditTime : 2024-02-06 10:38:12
  */
 import { DatavComponent } from '@/components/_models/datav-component'
 import {
@@ -18,43 +18,46 @@ import { getStaticData } from '@/api/data'
 const defaultConfig = {
   prop: '',
   label: '',
+  // 日期
   width: 0,
   minWidth: 0,
   render: '',
   fixed: '', // left right
+  align: 'left',
   formatter: '',
+  type: 'text',
+  // 日期
+  date: {
+    format: 'YYYY-MM-DD HH:mm:ss',
+  },
+  number: {
+    suffix: '元',
+    prefix: '',
+    animation: useNumberAnimation(),
+  },
+  event: [{
+    static: true,
+    use: true,
+    key1: '',
+    operator: '',
+    key2: '',
+    value: '',
+    config: {
+      ...chartFont,
+      icon: '',
+      layout: 'lr', // lr  rl
+      ...useDefaultBorder(),
+      background: useChartColor({ isCss: true }),
+    },
+  }],
+  field: '',
 }
 
 export class BasicTableSeries {
   public columns: typeof defaultConfig
   constructor(config) {
     this.columns = {
-      type: 'text',
-      // 日期
-      width: 0,
-      minWidth: 0,
-      render: '',
-      fixed: '', // left right
-      label: '',
-      date: {
-        format: 'YYYY-MM-DD HH:mm:ss',
-      },
-      event: [{
-        static: true,
-        use: true,
-        key1: '',
-        operator: '',
-        key2: '',
-        value: '',
-        config: {
-          ...chartFont,
-          icon: '',
-          layout: 'lr', // lr  rl
-          ...useDefaultBorder(),
-          background: useChartColor({ isCss: true }),
-        },
-      }],
-      field: '',
+      ...defaultConfig,
       ...config,
     }
   }
@@ -141,9 +144,9 @@ export class PageTable extends DatavComponent {
       },
     },
     series: [
-      new BasicTableSeries({ field: 'date', label: '日期' }),
-      new BasicTableSeries({ field: 'name', label: '名称' }),
-      new BasicTableSeries({ field: 'address', label: '地址' }),
+      new BasicTableSeries({ prop: 'date', label: '日期' }),
+      new BasicTableSeries({ prop: 'name', label: '名称' }),
+      new BasicTableSeries({ prop: 'address', label: '地址' }),
     ],
   }
 

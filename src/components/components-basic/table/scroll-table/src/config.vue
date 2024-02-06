@@ -4,7 +4,7 @@
  * @description  :
  * @updateInfo   :cssLayoutLabel
  * @Date         : 2023-11-23 18:29:13
- * @LastEditTime : 2024-01-02 17:31:08
+ * @LastEditTime : 2024-02-06 11:09:58
 -->
 <template>
   <chartGenerateConfig v-if="config.generate.configType === GenerateType.基础" :config="config" chart-type="none">
@@ -173,6 +173,9 @@
       <g-field :level="2" label="列Key值">
         <g-input v-model="item.config.field" />
       </g-field>
+      <g-field :level="2" label="对齐方式">
+        <g-select v-model="item.config.align" :data="aligns" />
+      </g-field>
       <g-field :level="2" label="列类别">
         <n-radio-group v-model:value="item.config.type" size="small">
           <n-radio-button value="text"> 文本 </n-radio-button>
@@ -181,10 +184,34 @@
         </n-radio-group>
       </g-field>
       <g-field v-if="item.config.type === 'number'" :level="2" label="数值">
-        <g-switch v-model="config.generate.number.animate" label="数值动画" />
-        <g-switch v-model="config.generate.number.spliter" label="分隔符" />
-        <g-input v-model="config.generate.number.prefix" inline label="前缀" />
-        <g-input v-model="config.generate.number.suffix" inline label="后缀" />
+        <g-switch v-model="item.config.number.animation.active" label="数值动画" />
+        <g-switch v-model="item.config.number.animation.showSeparator" label="分隔符" />
+        <g-input-number
+          v-model="item.config.number.animation.precision"
+          label="精度"
+          inline
+          suffix=""
+          :min="0"
+        />
+        <g-input-number
+          v-model="item.config.number.animation.duration"
+          label="动画时长"
+          inline
+          suffix="ms"
+          :min="0"
+          :step="500"
+        />
+        <g-switch v-model="item.config.number.animation.loop" label="循环播放" />
+        <g-input-number
+          v-model="item.config.number.animation.duration"
+          label="循环间隔"
+          inline
+          suffix="ms"
+          :min="0"
+          :step="500"
+        />
+        <g-input v-model="item.config.number.prefix" inline label="前缀" />
+        <g-input v-model="item.config.number.suffix" inline label="后缀" />
       </g-field>
       <g-field v-else-if="item.config.type === 'date'" :level="2" label="日期">
         <g-input v-model="item.config.date.format" label="日期格式化" />
@@ -211,6 +238,9 @@
         v-model="ev.use"
         toggle
         label-span="5"
+        :features="['remove']"
+        :list="item.config.event"
+        :d-index="index"
         tooltip="满足此条件的列表项，将按照此条件配置的样式展示"
         :label="`样式条件${index + 1}`"
       >
@@ -322,6 +352,7 @@ export default defineComponent({
       lineStyles: GlLineStyles,
       topShowTypes: GlTopShowTypes,
       GenerateType: EGenerateType,
+      aligns: GlHAligns,
     }
   },
 })

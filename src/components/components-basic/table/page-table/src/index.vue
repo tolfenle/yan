@@ -4,7 +4,7 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2024-01-31 14:54:34
- * @LastEditTime : 2024-02-02 17:44:37
+ * @LastEditTime : 2024-02-06 10:45:22
 -->
 <template>
   <div class="datav-wrapper page-table" :style="wrapperStyle">
@@ -21,12 +21,29 @@
     >
       <el-table-column
         v-for="item in config.series"
-        :key="item.columns.field"
-        :prop="item.columns.field"
+        :key="item.columns.prop"
+        :prop="item.columns.prop"
         :label="item.columns.label"
         :width="item.columns.width || undefined"
         :min-width="item.columns.minWidth || undefined"
-      />
+        :align="item.columns.align"
+        :fixed="item.columns.fixed"
+      >
+        <template #default="{ row }">
+          <GlCountTo
+            v-if="checkType(item?.columns.prop) === 'number'"
+            :num="Number.parseFloat(row[item.columns.prop])"
+            :item="item?.columns.number"
+            :style="getTbodyTdStyle(row, item?.columns.prop)"
+          />
+          <span v-else-if="checkType(item?.columns.prop) === 'date'" :style="getTbodyTdStyle(row, item?.columns.prop)">
+            {{ formatDate(item?.columns.prop, row[item?.columns.prop]) }}
+          </span>
+          <span v-else :style="getTbodyTdStyle(row, item?.columns.prop)">
+            {{ row[item?.columns.prop] }}
+          </span>
+        </template>
+      </el-table-column>
     </el-table>
     <div :style="pageStyle">
       <el-pagination
@@ -50,6 +67,7 @@ import { useDataCenter, getFieldMap } from '@/components/_mixins/use-data-center
 import { useApiStore } from '@/store/api'
 import { ElTable, ElTableColumn, ElPagination } from 'element-plus'
 import { PageTable } from './page-table'
+import { dayjs } from 'iking-utils'
 
 const props = defineProps<{
   com: PageTable
@@ -153,6 +171,35 @@ useDataCenter(props.com)
 watchEffect(() => {
   setTableApiPage()
 })
+
+const series = computed(() => config.value.series)
+const checkType = key => {
+  return series.value.find(ser => ser.columns.prop === key)?.columns.type || 'text'
+}
+const formatDate = (key,value) => {
+  const ser = series.value.find(ser => ser.columns.prop === key)
+  return dayjs(value).format(ser.columns.date.format)
+}
+const getTbodyTdStyle = (tdata, key) => {
+  const event = series.value.find(ser => ser.columns.prop === key)
+  if (!event) return {}
+  const forEvent = event?.columns?.event
+  if (!forEvent) return {}
+  for (let ev of forEvent) {
+    if (checkOperator(tdata[ev.key1], ev.operator, (ev.static ? ev.value : tdata[ev.key2]))) {
+      const sty = {
+        ...ev.config,
+        ...setChartColor(ev.config.background) as Object,
+        color: setChartColor(ev.config.color),
+        border: `${ev.config.borderWidth}px ${ev.config.borderType}  ${setChartColor(ev.config.borderColor)}`,
+      }
+      return sty
+    }
+  }
+  return {
+
+  }
+}
 
 const pageActiveBackground = computed(() => setChartColor(config.value.page.activeBg))
 const pageActiveColor = computed(() => setChartColor(config.value.page.activeColor))

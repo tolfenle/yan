@@ -4,7 +4,7 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2023-10-31 11:13:02
- * @LastEditTime : 2024-01-31 10:24:05
+ * @LastEditTime : 2024-02-04 16:20:04
 -->
 <template>
   <div class="datav">
@@ -27,6 +27,7 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useSocketStore } from '@/store/socket'
 import NavMain from './nav-main.vue'
 
 export default defineComponent({
@@ -57,6 +58,9 @@ export default defineComponent({
     const onNavChange = (nav: any) => {
       router.push({ name: nav.key })
     }
+
+    const socketStore = useSocketStore()
+    socketStore.createSocket()
 
     onMounted(() => {
       window.addEventListener('scroll', scroll)

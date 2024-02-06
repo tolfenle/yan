@@ -22,7 +22,7 @@ export const list: ComDataType = {
       alias: '分页表格',
       img: `${COM_CDN}/page-table-332-144.jpg`,
       thum: `${COM_CDN}/page-table-332-144.jpg`,
-      used: false,
+      used: true,
     },
   ],
 }

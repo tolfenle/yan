@@ -4,7 +4,7 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2023-10-31 11:13:00
- * @LastEditTime : 2023-12-05 13:42:39
+ * @LastEditTime : 2024-02-06 11:10:51
  */
 import { DatavEChartsComponent, DatavChartSeries } from '@/components/_models/datav-component'
 import {
@@ -24,6 +24,7 @@ export class ScrollTableSeries extends DatavChartSeries {
     this.name = name
     this.config = {
       type: 'text',
+      align: 'left',
       // 日期
       width: {
         auto: false,
@@ -32,6 +33,11 @@ export class ScrollTableSeries extends DatavChartSeries {
       },
       date: {
         format: 'YYYY-MM-DD HH:mm:ss',
+      },
+      number: {
+        suffix: '元',
+        prefix: '',
+        animation: useNumberAnimation(),
       },
       event: [{
         static: true,
@@ -140,7 +146,7 @@ export class ScrollTable extends DatavEChartsComponent {
         field: 'price',
         width: {
           auto: true,
-          value: 60,
+          value: 80,
           isPercent: false,
         },
         event: [{

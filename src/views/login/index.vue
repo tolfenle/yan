@@ -89,7 +89,6 @@
         </n-button>
         <div class="test-user">
           <n-button
-            :loading="loading"
             type="primary"
             text
             style="width: 100%; margin-bottom: 20px;"

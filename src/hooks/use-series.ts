@@ -14,7 +14,7 @@ export const useSeries = (config, comClass) => {
     dialog.warning({
       title: '警告',
       showIcon: false,
-      content: '请确认确定删除该系列,删除后无法恢复.',
+      content: '请确认删除该系列,删除后无法恢复.',
       positiveText: '确定',
       negativeText: '取消',
       class: 'remove-series',

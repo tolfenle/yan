@@ -4,12 +4,12 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2023-10-19 10:09:44
- * @LastEditTime : 2024-01-30 09:38:14
+ * @LastEditTime : 2024-02-05 12:16:18
 -->
 <script lang="ts" name="chartGenerateConfig" setup>
 import { PropType } from 'vue'
 import { TGenerateConfig } from './config'
-import { _ } from 'iking-utils'
+import { _, ikTree } from 'iking-utils'
 
 const props = defineProps({
   config: {
@@ -31,7 +31,16 @@ const isLine = computed(() => props.chartType === 'line')
 const isPie = computed(() => props.chartType === 'pie')
 const isChart = computed(() => isBar.value || isLine.value || isPie.value)
 
-const generateConfig = props.coms ? ref(_.cloneDeep(props.coms[0].config)) : toRef(props.config)
+// 框选中包含组合时，只获取组合中的组件
+const layerComs = computed(() => {
+  if (props.coms) {
+    const layerChildren = ikTree.treeToList(props.coms)
+    return layerChildren.filter(com => com.type !== ComType.layer)
+  }
+  return null
+})
+
+const generateConfig = layerComs.value ? ref(_.cloneDeep(layerComs.value[0].config)) : toRef(props.config)
 
 const fontFamilys = GlFontFamilys
 const fontStyles = GlFontStyles
@@ -98,15 +107,15 @@ const handChangeType = (value: any) => {
 }
 
 watch(() => generateConfig.value?.generate, val => {
-  if (!props.coms) return
+  if (!layerComs.value) return
   if (val) {
-    props.coms.forEach(com => {
+    layerComs.value.forEach(com => {
       // 通用样式单独配置，防止相互污染
       com.config.generate = {
         ...com.config.generate,
         color: val.color,
         lineStyle: _.cloneDeep(val.lineStyle),
-        radius: [...val.radius],
+        radius: val?.radius || [],
         textStyle: {
           ...val.textStyle,
         },
@@ -116,14 +125,14 @@ watch(() => generateConfig.value?.generate, val => {
 }, { deep: true })
 
 const checkGenerateKey = (key: string) => {
-  return generateConfig.value.generate.hasOwnProperty(key)
+  return generateConfig.value?.generate?.hasOwnProperty(key)
 }
 
 const labelSpan = 6
 </script>
 
 <template>
-  <div style="padding-top: 8px;">
+  <div v-if="generateConfig.generate" style="padding-top: 8px;">
     <g-field
       v-if="checkGenerateKey('color')"
       :level="2"
@@ -135,9 +144,6 @@ const labelSpan = 6
     <slot></slot>
 
     <template v-if="isBar">
-      <!-- <g-field :level="2" :label-span="labelSpan" label="柱体同色">
-        <n-switch v-model:value="generateConfig.generate.sameColor" />
-      </g-field> -->
       <g-field :level="2" :label-span="labelSpan" label="条形/柱状图">
         <n-switch v-model:value="generateConfig.generate.changeXY" />
       </g-field>

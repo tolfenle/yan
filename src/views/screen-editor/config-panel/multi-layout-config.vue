@@ -41,7 +41,7 @@
             <IconAlignVertical />
           </n-icon>
         </g-field>
-        <ChartGenerateConfig v-if="isSameType" :coms="comStore.selectedComs" />
+        <ChartGenerateConfig :coms="comStore.selectedComs" />
       </div>
     </div>
   </div>

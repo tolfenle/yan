@@ -4,7 +4,7 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2023-11-14 11:26:37
- * @LastEditTime : 2023-11-14 13:51:55
+ * @LastEditTime : 2024-02-06 11:22:48
  */
 import { defineStore } from 'pinia'
 import { useComStore } from './com'
@@ -38,7 +38,7 @@ export const useCacheStore = defineStore('cache', {
         comStore.load(_.cloneDeep(this.caches[this.cacheIndex].value))
       }
     },
-    // 前景
+    // 前进
     setNextCache() {
       if (this.cacheIndex < this.caches.length - 1) {
         const comStore = useComStore()

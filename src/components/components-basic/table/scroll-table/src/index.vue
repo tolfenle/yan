@@ -4,7 +4,7 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2023-11-29 17:43:06
- * @LastEditTime : 2023-12-21 16:56:37
+ * @LastEditTime : 2024-02-06 11:20:28
 -->
 <script setup lang="ts" name="ScrollTableProp">
 import { PropType, computed, toRef } from 'vue'
@@ -21,15 +21,10 @@ const props = defineProps({
 })
 
 const apiStore = useApiStore()
-const eventStore = useEventStore()
 useDataCenter(props.com)
 
 const dv_data = computed(() => {
   return apiStore.dataMap[props.com.id]?.source ?? []
-})
-
-const dv_field = computed(() => {
-  return getFieldMap(props.com.apis.source.fields)
 })
 
 const config = toRef(props.com, 'config')
@@ -99,20 +94,6 @@ const getOrderStyle = () => {
   }
 }
 
-// const getTitleStyle = index => {
-//   const item = config.value.series?.[index] || {}
-//   const mixStyle = { ...config.value.title, ...item?.config?.title }
-//   const { show, font } = mixStyle
-
-//   return {
-//     opacity: show ? 1 : 0,
-//     ...font,
-//     marginLeft: useNumberToPx(config.value.global.titleLeft ?? 8),
-//     fontSize: useNumberToPx(font.fontSize),
-//     ...setChartColor(font.color),
-//   }
-// }
-
 const getTbodyTdStyle = (tdata, key) => {
   const event = series.value.find(ser => ser.config.field === key)
   if (!event) return {}
@@ -122,7 +103,7 @@ const getTbodyTdStyle = (tdata, key) => {
     if (checkOperator(tdata[ev.key1], ev.operator, (ev.static ? ev.value : tdata[ev.key2]))) {
       const sty = {
         ...ev.config,
-        ...setChartColor(ev.config.background),
+        ...setChartColor(ev.config.background) as Object,
         color: setChartColor(ev.config.color),
         border: `${ev.config.borderWidth}px ${ev.config.borderType}  ${setChartColor(ev.config.borderColor)}`,
       }
@@ -130,7 +111,6 @@ const getTbodyTdStyle = (tdata, key) => {
     }
   }
   return {
-
   }
 }
 
@@ -141,6 +121,8 @@ const getTdStyle = index => {
   if (!width) return {}
   return {
     width: width.auto ? width.isPercent ? `${width.value}%` : useNumberToPx(width.value) : autoWidth.value,
+    justifyContent: ser.config.align,
+    display: 'flex',
   }
 }
 const getTdStyleByItem = key => {
@@ -150,6 +132,8 @@ const getTdStyleByItem = key => {
   if (!width) return {}
   return {
     width: width.auto ? width.isPercent ? `${width.value}%` : useNumberToPx(width.value) : autoWidth.value,
+    justifyContent: ser.config.align,
+    display: 'flex',
   }
 }
 
@@ -202,6 +186,7 @@ const formatDate = (key,value) => {
                 <GlCountTo
                   v-if="checkType(ser?.config.field) === 'number'"
                   :num="Number.parseFloat(tdata[ser?.config.field])"
+                  :item="ser?.config.number"
                   show-separator
                   :style="getTbodyTdStyle(tdata, ser?.config.field)"
                 />

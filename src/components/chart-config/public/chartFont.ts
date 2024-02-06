@@ -38,7 +38,7 @@ export const useChartColor = (option: any = {}) => {
     ...option
   }
 }
-export const setChartColor = (color: typeof defaultColor, single = false) => {
+export const setChartColor = (color: typeof defaultColor, single = false): string | Object => {
   if (!color || typeof color === 'string') return color
   if (color.isDefault) {
     if (color.type === COLOR_TYPE.单色) {

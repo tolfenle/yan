@@ -1,3 +1,11 @@
+<!--
+ * @Author       : wfl
+ * @LastEditors  : wfl
+ * @description  :
+ * @updateInfo   :
+ * @Date         : 2024-01-31 14:54:34
+ * @LastEditTime : 2024-02-06 10:56:33
+-->
 <template>
   <chartGenerateConfig v-if="config.generate.configType === GenerateType.基础" chart-type="none" :config="config">
     <g-field :level="2" label-span="6" label="表头">
@@ -164,11 +172,134 @@
     <el-tab-pane
       v-for="(item, index) in config.series"
       :key="index"
-      :label="`系列${index + 1}`"
-      :tab="`系列${index + 1}`"
+      :label="`列${index + 1}`"
+      :tab="`列${index + 1}`"
       :name="index"
     >
-      456456
+      <g-field :level="2" label="列名">
+        <g-input v-model="item.columns.label" />
+      </g-field>
+      <g-field :level="2" label="列Key值">
+        <g-input v-model="item.columns.prop" />
+      </g-field>
+      <g-field :level="2" label="对齐方式">
+        <g-select v-model="item.columns.align" :data="aligns" />
+      </g-field>
+      <g-field :level="2" label="固定位置">
+        <g-select v-model="item.columns.fixed" clearable :data="fixeds" />
+      </g-field>
+      <g-field :level="2" label="列类别">
+        <n-radio-group v-model:value="item.columns.type" size="small">
+          <n-radio-button value="text"> 文本 </n-radio-button>
+          <n-radio-button value="number"> 数值 </n-radio-button>
+          <n-radio-button value="date"> 日期 </n-radio-button>
+        </n-radio-group>
+      </g-field>
+      <g-field v-if="item.columns.type === 'number'" :level="2" label="数值">
+        <g-switch v-model="item.columns.number.animation.active" label="数值动画" />
+        <g-switch v-model="item.columns.number.animation.showSeparator" label="分隔符" />
+        <g-input-number
+          v-model="item.columns.number.animation.precision"
+          label="精度"
+          inline
+          suffix=""
+          :min="0"
+        />
+        <g-input-number
+          v-model="item.columns.number.animation.duration"
+          label="动画时长"
+          inline
+          suffix="ms"
+          :min="0"
+          :step="500"
+        />
+        <g-switch v-model="item.columns.number.animation.loop" label="循环播放" />
+        <g-input-number
+          v-model="item.columns.number.animation.duration"
+          label="循环间隔"
+          inline
+          suffix="ms"
+          :min="0"
+          :step="500"
+        />
+        <g-input v-model="item.columns.number.prefix" inline label="前缀" />
+        <g-input v-model="item.columns.number.suffix" inline label="后缀" />
+      </g-field>
+      <g-field v-else-if="item.columns.type === 'date'" :level="2" label="日期">
+        <g-input v-model="item.columns.date.format" label="日期格式化" />
+      </g-field>
+      <g-field :level="2" label="列宽" tooltip="列宽设置为0时默认自适应">
+        <g-input-number
+          v-model="item.columns.minWidth"
+          label="最小宽度"
+          inline
+          suffix="px"
+          :min="0"
+        />
+        <g-input-number
+          v-model="item.columns.width"
+          label="宽度"
+          inline
+          suffix="px"
+          :min="0"
+        />
+      </g-field>
+      <g-field-collapse
+        v-for="(ev, index) in item.columns.event"
+        :key="index"
+        v-model="ev.use"
+        toggle
+        label-span="5"
+        :features="['remove']"
+        tooltip="满足此条件的列表项，将按照此条件配置的样式展示"
+        :label="`样式条件${index + 1}`"
+        :list="item.columns.event"
+        :d-index="index"
+      >
+        <g-field :level="2" label="条件配置" label-span="5">
+          <g-input v-model="ev.key1" inline label="字段名" />
+          <g-select
+            v-model="ev.operator"
+            :data="operators"
+            inline
+            label="运算符"
+          />
+          <g-switch v-model="ev.static" label="是否与固定值比较" />
+          <g-input
+            v-if="!ev.static"
+            v-model="ev.key2"
+            inline
+            label="比较字段名"
+          />
+          <g-input
+            v-else
+            v-model="ev.value"
+            inline
+            label="输入要比较的值"
+          />
+        </g-field>
+        <g-field :level="2" label="条件样式" label-span="5">
+          <g-color-picker v-model="ev.config.background" label="背景色" />
+          <GChartFontConfig :overflow="false" no-line-height :config="ev.config" />
+        </g-field>
+        <GBorderConfig :span="5" :config="ev.config" />
+      </g-field-collapse>
+      <div>
+        <n-button
+          :focusable="false"
+          type="default"
+          size="tiny"
+          style="width: 100%;"
+          @click="handAddEvent(index)"
+        >
+          <template #icon>
+            <n-icon :size="12">
+              <IconPlus />
+            </n-icon>
+          </template>
+          新建样式条件
+        </n-button>
+      </div>
     </el-tab-pane>
   </el-tabs>
 </template>
@@ -196,6 +327,24 @@ export default defineComponent({
 
     const { activeTab, handleAddSeriesItem, handRemoveSeriesItem } = useSeries(config, BasicTableSeries)
 
+    const handAddEvent = (index: number) => {
+      config.value.series[index].columns.event.push({
+        static: true,
+        use: true,
+        key1: '',
+        operator: '',
+        key2: '',
+        value: '',
+        config: {
+          ...chartFont,
+          icon: '',
+          layout: 'lr', // lr  rl
+          ...useDefaultBorder(),
+          background: useChartColor({ isCss: true }),
+        },
+      })
+    }
+
     return {
       config,
       configType,
@@ -205,6 +354,16 @@ export default defineComponent({
       fontFamilys: GlFontFamilys,
       GenerateType: EGenerateType,
       justifyContents: GlJustifyContents,
+      aligns: GlHAligns,
+      fixeds: [
+        ...GlYxisPosition,
+        {
+          id: '',
+          value: '不固定',
+        },
+      ],
+      operators: GlOperators,
+      handAddEvent,
     }
   },
 })
