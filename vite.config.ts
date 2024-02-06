@@ -7,6 +7,8 @@ import setupExtend from 'vite-plugin-vue-setup-extend'
 import components from 'unplugin-vue-components/vite'
 import autoImport from 'unplugin-auto-import/vite'
 import compression from 'vite-plugin-compression'
+import pkg from './package.json'
+console.log('pkg: ', pkg)
 
 // import { mars3dPlugin } from 'vite-plugin-mars3d'
 
@@ -17,7 +19,7 @@ function pathResolve(dir: string) {
 }
 
 // https://vitejs.dev/config/
-export default ({ mode }: ConfigEnv) => {
+export default async ({ mode }: ConfigEnv) => {
   const dirRoot = process.cwd()
 
   const env = loadEnv(mode, dirRoot)
@@ -98,6 +100,9 @@ export default ({ mode }: ConfigEnv) => {
       __INTLIFY_PROD_DEVTOOLS__: false,
       __DEV__: process.env.NODE_ENV !== 'production',
       __PROD__: process.env.NODE_ENV === 'production',
+      __SYSTEM_INFO__: JSON.stringify({
+        version: pkg?.version,
+      }),
     },
     optimizeDeps: {
       include: [

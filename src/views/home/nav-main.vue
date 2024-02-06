@@ -4,13 +4,16 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2023-10-31 11:13:02
- * @LastEditTime : 2024-01-18 12:16:10
+ * @LastEditTime : 2024-02-06 16:48:04
 -->
 <template>
   <div class="nav-main">
     <div class="nav-logo">
       <img src="@/assets/img/logo.png">
-      <h2>金合可视化平台</h2>
+      <h2>
+        金合可视化平台
+        <em>v{{ sysInfo.version }}</em>
+      </h2>
     </div>
     <!-- <canvas id="nav-canvas" style="position: absolute; z-index: -1; left: 0;"></canvas> -->
     <div class="nav-list">
@@ -93,17 +96,12 @@ export default defineComponent({
     onMounted(() => {
       const nav = props.navs.find(m => m.key === route.name)
       activeNav.value = nav ? nav.id : 0
-      // nc = new NavCanvas('nav-canvas', '.nav-main .nav-span', activeNav.value)
-      // window.addEventListener('resize', debNavResize)
-    })
-
-    onUnmounted(() => {
-      // window.removeEventListener('resize',debNavResize)
     })
 
     return {
       toggleNav,
       activeNav,
+      sysInfo: __SYSTEM_INFO__,
     }
   },
 })
@@ -140,6 +138,12 @@ export default defineComponent({
       font-weight: normal;
       font-size: 24px;
       color: var(--datav-gui-font-color-1);
+      display: flex;
+      flex-direction: column;
+
+      em {
+        font-size: 12px;
+      }
     }
   }
 
