@@ -8,7 +8,6 @@ import components from 'unplugin-vue-components/vite'
 import autoImport from 'unplugin-auto-import/vite'
 import compression from 'vite-plugin-compression'
 import pkg from './package.json'
-console.log('pkg: ', pkg)
 
 // import { mars3dPlugin } from 'vite-plugin-mars3d'
 
