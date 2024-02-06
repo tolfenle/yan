@@ -4,7 +4,7 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2024-01-26 17:08:44
- * @LastEditTime : 2024-01-26 17:45:26
+ * @LastEditTime : 2024-02-06 12:18:12
 -->
 <template>
   <div class="datav-wrapper" :style="wrapperStyle" v-html="formatHtml">
@@ -45,7 +45,6 @@ const wrapperStyle = computed(() => {
 const formatHtml = computed(() => {
   const func = new Function('com, data', `${config.value.html}`)
   const html = func(props.com, dv_data.value)
-  console.log('html: ', html)
   return html
 })
 

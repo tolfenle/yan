@@ -182,8 +182,6 @@ export default defineComponent({
     }
 
     const resize = (config: PageConfig) => {
-      console.log('Number(config.zoomMode): ', Number(config.zoomMode))
-
       switch (Number(config.zoomMode)) {
         case ZoomMode.auto:
           resizeAuto(config.width, config.height)

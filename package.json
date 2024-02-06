@@ -57,6 +57,7 @@
     "pinia": "^2.1.7",
     "resize-observer-polyfill": "^1.5.1",
     "shortid": "^2.2.16",
+    "socket.io-client": "^4.7.4",
     "swiper": "^11.0.4",
     "three": "^0.159.0",
     "three.interactive": "^1.7.0",
@@ -66,6 +67,7 @@
     "vue-i18n": "^9.5.0",
     "vue-router": "^4.2.5",
     "vue3-colorpicker": "^2.2.2",
+    "vue3-lazyload": "^0.3.8",
     "vue3-lottie": "^3.2.0",
     "xgplayer": "^3.0.10",
     "xlsx": "^0.18.5"

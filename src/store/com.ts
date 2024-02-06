@@ -733,7 +733,6 @@ export const useComStore = defineStore('com', {
      */
     async cancelGroup() {
       const scoms = this.selectedComs
-      console.log('scoms: ', scoms)
       const sids = scoms.map(m => m.id)
       const pid = scoms[0].parentId
       const coms = scoms.flatMap(m => {

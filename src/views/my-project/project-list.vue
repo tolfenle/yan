@@ -247,7 +247,6 @@ export default defineComponent({
       getProjectScreen()
     }
     const handlePageChange = (cur_page: number) => {
-      console.log('cur_page: ', cur_page)
       page.value.page = cur_page
       getProjectScreen()
     }

@@ -20,10 +20,10 @@ export const useSocketStore = defineStore('socket', {
       try {
         this.socket = io(`${loadUrl}?token=${useUserStore().token}`)
         this.socket.on('connect', () => {
-          console.log('socket连接成功')
+          console.info('socket连接成功')
         })
         this.socket.on('notification', msg => {
-          console.log('msg: ', msg)
+          console.info('msg: ', msg)
         })
       } catch (error) {
         throw error

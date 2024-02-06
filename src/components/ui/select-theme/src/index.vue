@@ -4,7 +4,7 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2023-11-10 18:32:30
- * @LastEditTime : 2024-01-25 18:13:23
+ * @LastEditTime : 2024-02-06 12:14:12
 -->
 <template>
   <n-popover trigger="click" placement="bottom" :show-allow="false">
@@ -59,8 +59,10 @@ const themeList = cloneDeep(glThemeList)
 
 const colorValue = defineModel({
   type: Array<string>,
-  default: ()=> themeList[0],
+  default: ()=> [],
 })
+
+colorValue.value = colorValue.value.length ? colorValue.value : themeList[0]
 
 const handSelectTheme = item => {
   colorValue.value = item

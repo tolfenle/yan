@@ -48,7 +48,6 @@ const wrapperStyle = computed(() => {
 
 const option = computed(() => {
   const { chart, title, subtitle, legend, tooltip, plotOptions, generate, xAxis, yAxis } = config.value
-  console.log('dv_data.value', dv_data.value)
   const opt = {
     credits: {
       // 版权信息

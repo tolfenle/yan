@@ -34,8 +34,16 @@ export const useCacheStore = defineStore('cache', {
     setBackCache() {
       if (this.cacheIndex >= 0) {
         const comStore = useComStore()
-        this.cacheIndex = this.cacheIndex > 0 ? this.cacheIndex - 1 : 0
-        comStore.load(_.cloneDeep(this.caches[this.cacheIndex].value))
+        comStore.select('')
+        comStore.coms = []
+        nextTick(() => {
+          this.cacheIndex = this.cacheIndex > 0 ? this.cacheIndex - 1 : 0
+          const coms = _.cloneDeep(this.caches[this.cacheIndex].value)
+          coms.forEach(com => {
+            com.selected = false
+          })
+          comStore.load(coms)
+        })
       }
     },
     // 前进

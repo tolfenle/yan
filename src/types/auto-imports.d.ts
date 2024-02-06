@@ -9,7 +9,7 @@ declare global {
   const ApiStatus: typeof import('../components/_models/data-source')['ApiStatus']
   const ApiType: typeof import('../components/_models/data-source')['ApiType']
   const COLOR_TYPE: typeof import('../components/chart-config/public/chartFont')['COLOR_TYPE']
-  const ChartMap3dConfig: typeof import('../components/chart-config/map3d/ChartMap3dConfig')['default']
+  const ChartMap3dConfig: typeof import('../components/chart-config/map3d/ChartMap3dConfig.vue')['default']
   const ChartRichTextConfig: typeof import('../components/chart-config/label/config')['ChartRichTextConfig']
   const ComType: typeof import('../components/_models/datav-component')['ComType']
   const EChartEasing: typeof import('../components/_models/echarts-animation')['EChartEasing']
