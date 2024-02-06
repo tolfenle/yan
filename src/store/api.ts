@@ -4,7 +4,7 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2023-10-31 11:13:02
- * @LastEditTime : 2024-01-16 10:24:36
+ * @LastEditTime : 2024-02-06 16:22:44
  */
 import { defineStore } from 'pinia'
 import { set } from 'lodash-es'
@@ -18,6 +18,7 @@ import {
 import { isUrl, toJson, replaceTextParams } from '@/utils/util'
 import requestUtil from '@/components/_utils/request-util'
 import { useEventStore } from './event'
+import { useEditorStore } from './editor'
 import { netPost } from '@/utils/request'
 import { useRoute } from 'vue-router'
 import { paramType } from 'iking-utils'
@@ -54,7 +55,9 @@ export const useApiStore = defineStore('api', {
         res = config.data
         // API请求
       } else if (type === ApiType.api) {
-
+        const editorStore = useEditorStore()
+        const { iframe } = editorStore.pageConfig
+        console.log('iframe: ', iframe)
         if (!config.api) {
           return []
         }
@@ -65,7 +68,7 @@ export const useApiStore = defineStore('api', {
 
         let fixHeader = {}
         try {
-          const __header = route.query.header
+          const __header = route.query[iframe.header.name || 'header']
           if (__header) {
             const header = JSON.parse(__header)
             if (!paramType.isObject(header))
@@ -81,7 +84,8 @@ export const useApiStore = defineStore('api', {
 
         let fixQuery = {}
         try {
-          const __query = route.query.query
+          const __query = route.query[iframe.body.name || 'query']
+          console.log('route.query: ', route.query)
           if (__query) {
             const query = JSON.parse(__query)
             if (!paramType.isObject(query))
