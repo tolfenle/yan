@@ -7,7 +7,10 @@
     }"
   >
     <a target="_blank" href="javascript:;">
-      <img class="datav-logo" :src="`${cdn}/datav-loading.gif`">
+      <div class="datav-logo">
+        <img :src="loadingLogo">
+        <p class="loading-text">{{ pageConfig.iframe?.loadingTitle }}</p>
+      </div>
     </a>
   </div>
   <div class="datav-layout" :style="{ visibility: loading ? 'hidden' : 'visible' }">
@@ -66,10 +69,11 @@ export default defineComponent({
     const loading = ref(true)
     const { pageConfig } = storeToRefs(editorStore)
     const dialog = useDialog()
+    const loadingLogo = ref('')
 
     const computedLoading = () => {
-      if (location.href.includes('/share/#/') && (pageConfig.value as any).sharePassword) {
-        if (!ikStore.session.getItem('shared')) {
+      if ((location.href.includes('/share/#/') || location.href.includes('/screen/preview'))) {
+        if ((pageConfig.value as any).sharePassword && !ikStore.session.getItem('shared')) {
           const pawd = ref('')
           const statu = ref()
           dialog.info({
@@ -106,6 +110,14 @@ export default defineComponent({
             },
           })
         }
+
+        // 应用配置的分享信息
+        nextTick(() => {
+          const { iframe } = pageConfig.value
+          loadingLogo.value = pageConfig.value?.iframe?.loadingIcon ? setUrl(pageConfig.value?.iframe?.loadingIcon) : `${cdn}/datav-loading.gif`
+          iframe.title && (document.title = iframe.title)
+          iframe.favico && ((document.querySelector('link[rel="icon"]') as HTMLLinkElement).href = setUrl(iframe.favico))
+        })
       }
     }
     const filterComs = computed(() => {
@@ -226,8 +238,6 @@ export default defineComponent({
       resize(config)
     }
 
-    const router = useRouter()
-
     onMounted(async () => {
       try {
 
@@ -306,6 +316,7 @@ export default defineComponent({
       pageConfig,
       filterComs,
       styleFilter,
+      loadingLogo,
     }
   },
 })
@@ -336,10 +347,19 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-  .datav-logo {
-    width: 120px;
+    img {
+      width: 120px;
+    }
+
+    .loading-text {
+      font-size: 16px;
+      color: #d1d1d1;
+    }
   }
 
   .text-logo {

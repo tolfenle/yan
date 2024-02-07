@@ -4,7 +4,7 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2023-10-31 11:13:02
- * @LastEditTime : 2024-02-06 16:22:44
+ * @LastEditTime : 2024-02-06 17:30:07
  */
 import { defineStore } from 'pinia'
 import { set } from 'lodash-es'
@@ -57,7 +57,6 @@ export const useApiStore = defineStore('api', {
       } else if (type === ApiType.api) {
         const editorStore = useEditorStore()
         const { iframe } = editorStore.pageConfig
-        console.log('iframe: ', iframe)
         if (!config.api) {
           return []
         }
@@ -85,7 +84,6 @@ export const useApiStore = defineStore('api', {
         let fixQuery = {}
         try {
           const __query = route.query[iframe.body.name || 'query']
-          console.log('route.query: ', route.query)
           if (__query) {
             const query = JSON.parse(__query)
             if (!paramType.isObject(query))

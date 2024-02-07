@@ -4,7 +4,7 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2023-10-19 10:09:44
- * @LastEditTime : 2024-02-05 12:16:18
+ * @LastEditTime : 2024-02-07 09:41:03
 -->
 <script lang="ts" name="chartGenerateConfig" setup>
 import { PropType } from 'vue'
@@ -233,7 +233,7 @@ const labelSpan = 6
       />
       <g-color-picker v-model="generateConfig.generate.textStyle.color" inline label="文本颜色" />
       <g-color-picker
-        v-if="checkGenerateKey('lineStyle')"
+        v-if="checkGenerateKey('lineStyle') && generateConfig.generate.lineStyle?.color"
         v-model="generateConfig.generate.lineStyle.color"
         inline
         :label="isChart ? '轴线颜色' : '边框颜色'"
