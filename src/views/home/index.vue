@@ -4,7 +4,7 @@
  * @description  :
  * @updateInfo   :
  * @Date         : 2023-10-31 11:13:02
- * @LastEditTime : 2024-02-04 16:20:04
+ * @LastEditTime : 2024-02-07 12:17:10
 -->
 <template>
   <div class="datav">
@@ -59,8 +59,8 @@ export default defineComponent({
       router.push({ name: nav.key })
     }
 
-    const socketStore = useSocketStore()
-    socketStore.createSocket()
+    // const socketStore = useSocketStore()
+    // socketStore.createSocket()
 
     onMounted(() => {
       window.addEventListener('scroll', scroll)

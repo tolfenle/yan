@@ -48,7 +48,7 @@
                   </div>
                 </div>
                 <div class="template-info">
-                  <div class="template-name">{{ tpl.name }}</div>
+                  <div class="template-name" :title="tpl.name">{{ tpl.name }}</div>
                   <div class="template-size">
                     <p>{{ tpl.width }}</p>
                     <p>{{ tpl.height }}</p>
@@ -77,7 +77,7 @@
                   </div>
                 </div>
                 <div class="template-info">
-                  <div class="template-name">{{ tpl.name }}</div>
+                  <div class="template-name" :title="tpl.name">{{ tpl.name }}</div>
                   <div class="template-size">
                     <p>{{ tpl.width }}</p>
                     <p>{{ tpl.height }}</p>

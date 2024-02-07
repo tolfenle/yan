@@ -23,7 +23,7 @@
         <div v-for="(temp, index) in templatesList" :key="temp.id" class="template-item">
           <img v-lazy="temp.isSystem ? sysLogo : publicLogo" class="temp-snap">
           <img v-lazy="temp.snapshot" alt="" class="preview-image">
-          <p class="template-name">{{ temp.name }}</p>
+          <p class="template-name" :title="temp.name">{{ temp.name }}</p>
 
           <div class="template-mask">
             <n-button
